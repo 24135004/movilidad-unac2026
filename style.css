@@ -1,27 +1,45 @@
-/* --- ESTILOS PARA TEMA CLARO (HORARIOS) --- */
-.light-bg { background-color: #ffffff; color: #1e293b; }
-.dark-nav { background-color: #030712; }
-.schedule-content { padding: 60px 8%; text-align: center; }
-.title-dark { color: #0f172a; font-family: 'Archivo Black', sans-serif; font-size: 40px; margin: 10px 0; }
-.subtitle { color: #ffb400; font-weight: bold; font-size: 13px; }
-.desc-dark { color: #64748b; margin-bottom: 40px; }
+/* --- ESTILOS MODERNOS PARA HORARIOS --- */
+.light-bg { background: #f0f2f5; color: #1a1a1a; overflow-x: hidden; }
+.schedule-section { padding: 80px 8% 40px; max-width: 1200px; margin: 0 auto; }
+.header-content { text-align: center; margin-bottom: 50px; }
+.accent { color: #030712; border-bottom: 4px solid #ffb400; }
 
-/* Selector */
-.route-selector { display: inline-flex; background: #f1f5f9; padding: 6px; border-radius: 50px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
-.tab-btn { border: none; padding: 12px 24px; border-radius: 40px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: bold; background: transparent; color: #64748b; transition: 0.3s; }
-.tab-btn.active { background: #030712; color: white; }
+/* Selector Tecnológico */
+.modern-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 50px; }
+.selector-btn { 
+    background: #fff; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 12px;
+    font-weight: bold; cursor: pointer; transition: 0.4s all ease; display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.selector-btn.active { background: #030712; color: #fff; border-color: #030712; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-/* Tabla Estilo Card */
-.table-wrapper { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; max-width: 1000px; margin: 0 auto; border: 1px solid #e2e8f0; text-align: left; }
-.table-title { background: #030712; color: white; padding: 15px 25px; font-weight: bold; font-size: 14px; }
-.table-title.return { background: #1e293b; }
+/* Grid de Recuadros (Cards) */
+.cards-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; transition: opacity 0.3s ease; 
+}
 
-.table-wrapper table { width: 100%; border-collapse: collapse; }
-.table-wrapper th { background: #f8fafc; color: #94a3b8; padding: 15px 25px; font-size: 11px; text-transform: uppercase; border-bottom: 1px solid #f1f5f9; }
-.table-wrapper td { padding: 20px 25px; border-bottom: 1px solid #f1f5f9; color: #1e293b; font-size: 15px; }
+/* El "Recuadro" Tecnológico */
+.tech-card {
+    background: #fff; border-radius: 20px; padding: 30px; position: relative;
+    border: 1px solid #edf2f7; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.tech-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
 
-/* Etiquetas de estado */
-.tag-reg { background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-.tag-warn { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.card-icon { font-size: 24px; color: #ffb400; margin-bottom: 15px; }
+.card-time { font-size: 32px; font-weight: 900; color: #030712; margin-bottom: 15px; }
+.card-info p { font-size: 14px; color: #64748b; margin: 5px 0; }
+.card-info span { font-weight: bold; color: #1e293b; }
 
-.alert-box { margin-top: 30px; background: #fffbeb; border: 1px solid #fef3c7; color: #92400e; padding: 15px 25px; border-radius: 10px; display: inline-block; font-size: 14px; }
+.status-tag { 
+    display: inline-block; margin-top: 20px; padding: 6px 15px; border-radius: 50px; 
+    font-size: 11px; font-weight: bold; text-transform: uppercase;
+}
+.status-tag.reg { background: #dcfce7; color: #166534; }
+.status-tag.warn { background: #fee2e2; color: #991b1b; }
+
+.notice-card { 
+    margin-top: 60px; background: #fff; padding: 20px; border-radius: 15px;
+    display: flex; align-items: center; gap: 15px; border-left: 5px solid #ffb400;
+}
