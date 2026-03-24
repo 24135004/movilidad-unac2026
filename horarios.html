@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horarios - Movilidad UNAC</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="light-bg">
+<body class="bg-light">
     <nav class="navbar dark-nav">
-        <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
+        <div class="logo">
+            <img src="logo_unac.png" alt="UNAC" class="unac-img"> <div>
+                UNIVERSIDAD NACIONAL DEL CALLAO<br>
+                <span>MOVILIDAD UNIVERSITARIA</span>
+            </div>
+        </div>
         <div class="menu">
             <a href="index.html">Inicio</a>
             <a href="horarios.html" class="active">Horarios</a>
@@ -19,76 +23,105 @@
         </div>
     </nav>
 
-    <main class="schedule-section">
-        <div class="header-content">
-            <span class="badge-tech">SISTEMA ACADÉMICO 2026-I</span>
-            <h1>Horarios de la <span class="accent">Ruta Ventanilla</span></h1>
-            <p>Selecciona tu dirección de viaje para visualizar los turnos disponibles en tiempo real.</p>
-        </div>
+    <main class="container-schedule">
+        <p class="top-tag">PLANIFICA TU VIAJE</p>
+        <h1 class="main-title">Horarios de la Ruta Ventanilla</h1>
+        <p class="main-desc">Consulta los horarios actualizados del servicio de transporte universitario para el semestre 2026-I. Los horarios pueden variar en días festivos.</p>
 
-        <div class="modern-selector">
-            <button id="btn-ida" class="selector-btn active" onclick="updateView('ida')">
-                <i class="fas fa-arrow-right"></i> Ventanilla → UNAC
+        <div class="route-switch">
+            <button id="btn-ida" class="switch-btn active" onclick="mostrarRuta('ida')">
+                ➔ Ventanilla → UNAC
             </button>
-            <button id="btn-vuelta" class="selector-btn" onclick="updateView('vuelta')">
-                <i class="fas fa-arrow-left"></i> UNAC → Ventanilla
+            <button id="btn-vuelta" class="switch-btn" onclick="mostrarRuta('vuelta')">
+                ← UNAC → Ventanilla
             </button>
         </div>
 
-        <div id="grid-horarios" class="cards-grid">
+        <div id="tabla-ida" class="table-card">
+            <div class="card-header">
+                <span>🚌 Servicio: Ventanilla → Campus UNAC Bellavista</span>
             </div>
-
-        <div class="notice-card">
-            <i class="fas fa-info-circle"></i>
-            <p><strong>Nota institucional:</strong> Los horarios pueden ajustarse durante semanas de exámenes o por disposición de la universidad.</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>HORA DE SALIDA</th>
+                            <th>PUNTO DE PARTIDA</th>
+                            <th>DESTINO</th>
+                            <th>DÍAS</th>
+                            <th>TIPO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-cell">05:15 AM</td>
+                            <td>Sede UNAC</td>
+                            <td>Campus UNAC – Bellavista</td>
+                            <td>Lunes a Viernes</td>
+                            <td><span class="badge-reg">Regular</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <div id="tabla-vuelta" class="table-card" style="display:none;">
+            <div class="card-header">
+                <span>🚌 Servicio: Campus UNAC Bellavista → Ventanilla</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>HORA DE SALIDA</th>
+                            <th>PUNTO DE PARTIDA</th>
+                            <th>DESTINO</th>
+                            <th>DÍAS</th>
+                            <th>TIPO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-cell">06:00 PM</td>
+                            <td>Campus UNAC – Bellavista</td>
+                            <td>Plaza Principal de Ventanilla</td>
+                            <td>Lunes a Viernes</td>
+                            <td><span class="badge-reg">Regular</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">02:30 PM</td>
+                            <td>Campus UNAC – Bellavista</td>
+                            <td>Plaza Principal de Ventanilla</td>
+                            <td>Lunes a Viernes</td>
+                            <td><span class="badge-warn">Previo Comunicado</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-cell">10:15 PM</td>
+                            <td>Campus UNAC – Bellavista</td>
+                            <td>Plaza Principal de Ventanilla</td>
+                            <td>Lunes a Viernes</td>
+                            <td><span class="badge-warn">Previo Comunicado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="info-alert">
+            <strong>Importante:</strong> Los horarios pueden modificarse en semanas de exámenes, feriados o por disposición institucional. Sigue nuestras actualizaciones en esta página o contáctanos para mayor información.
+        </div>
+
+        <h2 class="section-title">Tarifas del Servicio</h2>
     </main>
 
     <script>
-        const data = {
-            ida: [
-                { hora: "05:15 AM", salida: "Sede UNAC", destino: "Campus Bellavista", tipo: "Regular", icon: "fa-sun" }
-            ],
-            vuelta: [
-                { hora: "02:30 PM", salida: "Campus Bellavista", destino: "Pza. Ventanilla", tipo: "Previo Comunicado", icon: "fa-cloud-sun" },
-                { hora: "06:00 PM", salida: "Campus Bellavista", destino: "Pza. Ventanilla", tipo: "Regular", icon: "fa-moon" },
-                { hora: "10:15 PM", salida: "Campus Bellavista", destino: "Pza. Ventanilla", tipo: "Previo Comunicado", icon: "fa-star" }
-            ]
-        };
-
-        function updateView(route) {
-            const container = document.getElementById('grid-horarios');
-            const items = data[route];
+        function mostrarRuta(ruta) {
+            document.getElementById('tabla-ida').style.display = ruta === 'ida' ? 'block' : 'none';
+            document.getElementById('tabla-vuelta').style.display = ruta === 'vuelta' ? 'block' : 'none';
             
-            // Animación de salida
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                container.innerHTML = items.map(item => `
-                    <div class="tech-card">
-                        <div class="card-glow"></div>
-                        <div class="card-icon"><i class="fas ${item.icon}"></i></div>
-                        <div class="card-time">${item.hora}</div>
-                        <div class="card-info">
-                            <p><span>Origen:</span> ${item.salida}</p>
-                            <p><span>Destino:</span> ${item.destino}</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="status-tag ${item.tipo === 'Regular' ? 'reg' : 'warn'}">${item.tipo}</span>
-                        </div>
-                    </div>
-                `).join('');
-                
-                // Animación de entrada
-                container.style.opacity = '1';
-                
-                document.querySelectorAll('.selector-btn').forEach(b => b.classList.remove('active'));
-                document.getElementById('btn-' + route).classList.add('active');
-            }, 200);
+            document.getElementById('btn-ida').classList.toggle('active', ruta === 'ida');
+            document.getElementById('btn-vuelta').classList.toggle('active', ruta === 'vuelta');
         }
-
-        // Carga inicial
-        updateView('ida');
     </script>
 </body>
 </html>
