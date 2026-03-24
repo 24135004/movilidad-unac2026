@@ -1,36 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: #030712; color: white; font-family: 'Inter', sans-serif; }
+
+body { 
+    background-color: #030712; 
+    color: white; 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.6;
+}
 
 .main-container {
     min-height: 100vh;
-    /* IMPORTANTE: Si subes tu foto a GitHub con el nombre 'fondo.jpg', usa este código: */
-    background: linear-gradient(rgba(3,7,18,0.8), rgba(3,7,18,0.8)), url('fondo.jpg');
+    /* Asegúrate de subir 'fondo.jpg' a GitHub para que se vea la imagen */
+    background: linear-gradient(rgba(3,7,18,0.85), rgba(3,7,18,0.85)), url('fondo.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
 }
 
+/* Navegación */
 .navbar { display: flex; justify-content: space-between; padding: 30px 8%; align-items: center; }
-.logo { font-size: 13px; font-weight: 900; }
-.logo span { color: #ffb400; font-size: 11px; }
-.menu a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 13px; }
+.logo { font-size: 13px; font-weight: 900; letter-spacing: 1px; }
+.logo span { color: #ffb400; font-size: 11px; display: block; margin-top: 4px; }
+.menu a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 13px; transition: 0.3s; }
+.menu a:hover { color: #ffb400; }
 .menu .active { background: #ffb400; color: black; padding: 8px 15px; border-radius: 4px; font-weight: bold; }
 
+/* Hero Section */
 .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; }
-.badge { border: 1px solid #ffb400; color: #ffb400; padding: 5px 15px; border-radius: 20px; font-size: 11px; margin-bottom: 20px; width: fit-content; }
-h1 { font-family: 'Archivo Black', sans-serif; font-size: 70px; line-height: 0.9; text-transform: uppercase; }
+.badge { border: 1px solid #ffb400; color: #ffb400; padding: 6px 16px; border-radius: 20px; font-size: 10px; margin-bottom: 20px; width: fit-content; font-weight: bold; letter-spacing: 1px; }
+h1 { font-family: 'Archivo Black', sans-serif; font-size: 70px; line-height: 0.9; text-transform: uppercase; margin-bottom: 10px; }
 .yellow { color: #ffb400; }
-.ruta-txt { font-size: 24px; font-weight: bold; margin: 15px 0; }
-.desc { color: #cbd5e1; max-width: 500px; line-height: 1.6; margin-bottom: 30px; }
+.ruta-txt { font-size: 24px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; }
+.desc { color: #cbd5e1; max-width: 550px; margin-bottom: 35px; font-size: 16px; }
 
+/* Botones */
 .btns { display: flex; gap: 15px; }
-.btn-fill { background: #ffb400; color: black; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; }
-.btn-line { border: 1px solid #475569; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; }
+.btn-fill { background: #ffb400; color: black; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #ffb400; }
+.btn-fill:hover { background: transparent; color: #ffb400; }
+.btn-line { border: 2px solid #475569; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+.btn-line:hover { border-color: white; background: rgba(255,255,255,0.1); }
 
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); background: rgba(0,0,0,0.8); padding: 30px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-.item { text-align: center; }
-.item strong { display: block; font-size: 20px; color: #ffb400; }
-.item p { font-size: 10px; color: #94a3b8; text-transform: uppercase; }
+/* Footer con Stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); background: rgba(0,0,0,0.8); padding: 35px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+.item { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+.item:last-child { border-right: none; }
+.item strong { display: block; font-size: 24px; color: #ffb400; font-family: 'Archivo Black', sans-serif; }
+.item p { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+/* --- DISEÑO PARA LA PÁGINA DE HORARIOS --- */
+.table-section { padding: 50px 8%; flex: 1; }
+.table-container { margin-top: 40px; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { background: rgba(255, 180, 0, 0.1); color: #ffb400; padding: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; }
+tr:last-child td { border-bottom: none; }
+tr:hover { background: rgba(255, 255, 255, 0.03); }
