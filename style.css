@@ -1,59 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap');
+/* --- ESTILOS PARA TEMA CLARO (HORARIOS) --- */
+.light-bg { background-color: #ffffff; color: #1e293b; }
+.dark-nav { background-color: #030712; }
+.schedule-content { padding: 60px 8%; text-align: center; }
+.title-dark { color: #0f172a; font-family: 'Archivo Black', sans-serif; font-size: 40px; margin: 10px 0; }
+.subtitle { color: #ffb400; font-weight: bold; font-size: 13px; }
+.desc-dark { color: #64748b; margin-bottom: 40px; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Selector */
+.route-selector { display: inline-flex; background: #f1f5f9; padding: 6px; border-radius: 50px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
+.tab-btn { border: none; padding: 12px 24px; border-radius: 40px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: bold; background: transparent; color: #64748b; transition: 0.3s; }
+.tab-btn.active { background: #030712; color: white; }
 
-body { 
-    background-color: #030712; 
-    color: white; 
-    font-family: 'Inter', sans-serif; 
-    line-height: 1.6;
-}
+/* Tabla Estilo Card */
+.table-wrapper { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; max-width: 1000px; margin: 0 auto; border: 1px solid #e2e8f0; text-align: left; }
+.table-title { background: #030712; color: white; padding: 15px 25px; font-weight: bold; font-size: 14px; }
+.table-title.return { background: #1e293b; }
 
-.main-container {
-    min-height: 100vh;
-    /* Asegúrate de subir 'fondo.jpg' a GitHub para que se vea la imagen */
-    background: linear-gradient(rgba(3,7,18,0.85), rgba(3,7,18,0.85)), url('fondo.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-}
+.table-wrapper table { width: 100%; border-collapse: collapse; }
+.table-wrapper th { background: #f8fafc; color: #94a3b8; padding: 15px 25px; font-size: 11px; text-transform: uppercase; border-bottom: 1px solid #f1f5f9; }
+.table-wrapper td { padding: 20px 25px; border-bottom: 1px solid #f1f5f9; color: #1e293b; font-size: 15px; }
 
-/* Navegación */
-.navbar { display: flex; justify-content: space-between; padding: 30px 8%; align-items: center; }
-.logo { font-size: 13px; font-weight: 900; letter-spacing: 1px; }
-.logo span { color: #ffb400; font-size: 11px; display: block; margin-top: 4px; }
-.menu a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 13px; transition: 0.3s; }
-.menu a:hover { color: #ffb400; }
-.menu .active { background: #ffb400; color: black; padding: 8px 15px; border-radius: 4px; font-weight: bold; }
+/* Etiquetas de estado */
+.tag-reg { background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.tag-warn { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
 
-/* Hero Section */
-.hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 8%; }
-.badge { border: 1px solid #ffb400; color: #ffb400; padding: 6px 16px; border-radius: 20px; font-size: 10px; margin-bottom: 20px; width: fit-content; font-weight: bold; letter-spacing: 1px; }
-h1 { font-family: 'Archivo Black', sans-serif; font-size: 70px; line-height: 0.9; text-transform: uppercase; margin-bottom: 10px; }
-.yellow { color: #ffb400; }
-.ruta-txt { font-size: 24px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; }
-.desc { color: #cbd5e1; max-width: 550px; margin-bottom: 35px; font-size: 16px; }
-
-/* Botones */
-.btns { display: flex; gap: 15px; }
-.btn-fill { background: #ffb400; color: black; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #ffb400; }
-.btn-fill:hover { background: transparent; color: #ffb400; }
-.btn-line { border: 2px solid #475569; color: white; padding: 16px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-.btn-line:hover { border-color: white; background: rgba(255,255,255,0.1); }
-
-/* Footer con Stats */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); background: rgba(0,0,0,0.8); padding: 35px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-.item { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
-.item:last-child { border-right: none; }
-.item strong { display: block; font-size: 24px; color: #ffb400; font-family: 'Archivo Black', sans-serif; }
-.item p { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
-
-/* --- DISEÑO PARA LA PÁGINA DE HORARIOS --- */
-.table-section { padding: 50px 8%; flex: 1; }
-.table-container { margin-top: 40px; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
-table { width: 100%; border-collapse: collapse; text-align: left; }
-th { background: rgba(255, 180, 0, 0.1); color: #ffb400; padding: 20px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: #cbd5e1; }
-tr:last-child td { border-bottom: none; }
-tr:hover { background: rgba(255, 255, 255, 0.03); }
+.alert-box { margin-top: 30px; background: #fffbeb; border: 1px solid #fef3c7; color: #92400e; padding: 15px 25px; border-radius: 10px; display: inline-block; font-size: 14px; }
