@@ -6,97 +6,105 @@
     <title>Horarios - Movilidad UNAC</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- ESTILOS DE NAVEGACIÓN (Títulos de arriba) --- */
+        /* --- RESET Y BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- NAVBAR (Lo de arriba) --- */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%;
-            background: rgba(0,0,0,0.9);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 20px 7%;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid #222;
         }
-        .logo { font-weight: bold; line-height: 1.2; font-size: 0.8rem; }
+        .logo { font-weight: bold; font-size: 0.8rem; line-height: 1.2; }
         .logo span { color: #ffb400; }
         .menu { display: flex; gap: 20px; }
-        .menu a { color: #fff; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .menu a:hover, .menu a.active { color: #ffb400; }
+        .menu a { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .menu a.active { color: #ffb400; border-bottom: 2px solid #ffb400; padding-bottom: 5px; }
 
-        /* --- CUERPO Y CENTRADO --- */
-        body { 
-            background-color: #000; 
-            color: #fff; 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centra todo horizontalmente */
-        }
-
+        /* --- CONTENIDO CENTRAL --- */
         .hero {
-            width: 100%;
-            max-width: 1200px; /* Ancho máximo para laptop */
-            padding: 60px 20px;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Centra el contenido interno */
+            align-items: center;
+            padding: 50px 20px;
             text-align: center;
         }
 
-        h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 10px; font-weight: 800; }
-        .subtitle { color: #aaa; margin-bottom: 40px; max-width: 800px; }
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 10px; }
+        .subtitle { color: #888; margin-bottom: 40px; max-width: 700px; }
 
-        /* --- RECUADRO NEGRO CENTRAL --- */
-        .info-panel {
+        /* --- EL RECUADRO NEGRO --- */
+        .info-panel, .table-wrap {
             background: #0a0a0a;
             border: 1px solid #222;
             border-radius: 20px;
+            width: 100%;
+            max-width: 1000px; /* Tamaño centrado y amplio */
             padding: 30px;
-            width: 95%;
-            max-width: 900px; /* Tamaño ideal del recuadro */
-            margin-bottom: 30px;
-            text-align: left; /* Texto interno a la izquierda para lectura */
+            margin-bottom: 25px;
+            text-align: left;
         }
 
-        /* --- BOTONES DE CAMBIO --- */
+        /* --- SWITCH IDA/VUELTA --- */
         .switch-container {
             display: flex;
             background: #1a1a1a;
             border-radius: 50px;
-            padding: 6px;
+            padding: 5px;
             margin-bottom: 30px;
+            cursor: pointer;
             width: fit-content;
         }
         .switch-btn {
-            padding: 12px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
-            cursor: pointer;
             font-weight: 600;
-            transition: 0.4s;
+            font-size: 0.85rem;
+            transition: 0.3s;
         }
         .going .btn-going, .return .btn-return { background: #ffb400; color: #000; }
-        .going .btn-return, .return .btn-going { color: #888; }
+        .going .btn-return, .return .btn-going { color: #666; }
 
-        /* --- TABLA --- */
-        .table-wrap {
-            width: 95%;
-            max-width: 900px;
+        /* --- TABLAS --- */
+        .schedule-table { display: none; width: 100%; border-collapse: collapse; }
+        .active-table { display: table; }
+        th { color: #ffb400; text-align: left; padding: 15px; border-bottom: 1px solid #222; font-size: 0.75rem; text-transform: uppercase; }
+        td { padding: 15px; border-bottom: 1px solid #111; font-size: 0.9rem; }
+        .time { font-weight: bold; color: #fff; }
+
+        /* --- BARRA DE ABAJO (Stats) --- */
+        .stats {
             background: #0a0a0a;
-            border: 1px solid #222;
-            border-radius: 15px;
-            overflow: hidden;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 5%;
+            border-top: 1px solid #222;
+            width: 100%;
         }
-        table { width: 100%; border-collapse: collapse; }
-        th { background: #151515; padding: 15px; color: #ffb400; text-transform: uppercase; font-size: 0.7rem; }
-        td { padding: 18px; border-bottom: 1px solid #1a1a1a; }
+        .item { text-align: center; }
+        .item strong { display: block; color: #ffb400; font-size: 1.1rem; }
+        .item p { font-size: 0.75rem; color: #666; margin-top: 5px; text-transform: uppercase; }
 
-        /* --- ESTILO MÓVIL --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .menu { display: none; } /* Ocultar menú en móvil o usar hamburguesa */
-            .hero { padding: 30px 15px; }
-            .info-panel { padding: 20px; }
-            table { font-size: 0.8rem; }
+            .navbar { padding: 15px 5%; }
+            .menu { display: none; } /* Oculto en móvil por espacio */
+            .stats { flex-wrap: wrap; gap: 20px; }
+            .item { flex: 1 1 40%; }
+            h1 { font-size: 2rem; }
+            .table-wrap { overflow-x: auto; }
         }
     </style>
 </head>
@@ -114,36 +122,56 @@
     </nav>
 
     <section class="hero">
-        <p style="color: #ffb400; font-weight: bold;">PLANIFICA TU VIAJE</p>
+        <p style="color: #ffb400; font-weight: bold; letter-spacing: 1px;">PLANIFICA TU VIAJE</p>
         <h1>Horarios de la Ruta Ventanilla</h1>
-        <p class="subtitle">Consulta los horarios actualizados para el semestre 2026-A.</p>
+        <p class="subtitle">Programación vigente para el ciclo 2026-A.</p>
 
         <div class="info-panel">
-            <strong style="color: #fff;">🚍 Servicio de Movilidad Universitaria</strong><br><br>
-            Comprometidos con tu puntualidad académica, presentamos la programación vigente. Los horarios están sujetos a cambios por disposición institucional o semanas de evaluación.
+            <p><strong>🚍 Servicio de Movilidad Universitaria 📍</strong></p><br>
+            <p style="color: #ccc;">Horarios sujetos a cambios por disposición institucional o semanas de evaluación. Mantente atento a las actualizaciones.</p>
         </div>
 
-        <div class="switch-container going" id="toggleSchedule">
+        <div class="switch-container going" id="mainSwitch">
             <div class="switch-btn btn-going">Ventanilla → UNAC</div>
             <div class="switch-btn btn-return">UNAC → Ventanilla</div>
         </div>
 
         <div class="table-wrap">
-            <table id="tableGoing">
+            <table class="schedule-table active-table" id="tableGoing">
                 <thead><tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>05:15 AM</strong></td><td>Sede UNAC</td><td>Campus Bellavista</td><td>L-V</td></tr>
+                    <tr><td class="time">05:15 AM</td><td>Ventanilla</td><td>Campus UNAC</td><td>L-V</td></tr>
+                </tbody>
+            </table>
+
+            <table class="schedule-table" id="tableReturn">
+                <thead><tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th></tr></thead>
+                <tbody>
+                    <tr><td class="time">06:00 PM</td><td>Campus UNAC</td><td>Ventanilla</td><td>L-V</td></tr>
+                    <tr><td class="time">02:30 PM</td><td>Campus UNAC</td><td>INKA COLA</td><td>L-V</td></tr>
+                    <tr><td class="time">10:15 PM</td><td>Campus UNAC</td><td>TELÉFONO</td><td>L-V</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
+    <footer class="stats">
+        <div class="item"><strong>Lunes a Viernes</strong><p>Frecuencia</p></div>
+        <div class="item"><strong>En Servicio</strong><p>Estado</p></div>
+        <div class="item"><strong>40 Cupos</strong><p>Capacidad</p></div>
+        <div class="item"><strong>Directa</strong><p>Ruta</p></div>
+    </footer>
+
     <script>
-        const btnToggle = document.getElementById('toggleSchedule');
-        btnToggle.addEventListener('click', () => {
-            btnToggle.classList.toggle('going');
-            btnToggle.classList.toggle('return');
-            // Aquí puedes agregar la lógica para cambiar los datos de la tabla
+        const sw = document.getElementById('mainSwitch');
+        const t1 = document.getElementById('tableGoing');
+        const t2 = document.getElementById('tableReturn');
+
+        sw.addEventListener('click', () => {
+            sw.classList.toggle('going');
+            sw.classList.toggle('return');
+            t1.classList.toggle('active-table');
+            t2.classList.toggle('active-table');
         });
     </script>
 </body>
