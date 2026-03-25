@@ -4,39 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movilidad Universitaria UNAC</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR UNIFICADA */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #0a0a0a;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-weight: bold; font-size: 0.8rem; line-height: 1.2; text-align: left; }
+        .logo span { color: #ffb400; }
+        
+        .menu { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        .menu a { color: #fff; text-decoration: none; font-size: 0.75rem; padding: 5px; }
+        .menu a.active { color: #ffb400; font-weight: bold; }
+        .menu a.consultas { color: #fff; border: 1px solid #ffb400; border-radius: 4px; padding: 4px 8px; }
+
+        /* HERO SECTION */
+        .hero {
+            width: 100%;
+            max-width: 1100px;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .badge { 
+            background: rgba(255, 180, 0, 0.1); 
+            color: #ffb400; 
+            padding: 8px 16px; 
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 180, 0, 0.3);
+        }
+
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        h1 .yellow { color: #ffb400; }
+        
+        .ruta-txt { color: #ffb400; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        .desc { color: #888; max-width: 600px; font-size: 1rem; line-height: 1.6; margin-bottom: 35px; }
+
+        /* BOTONES */
+        .btns { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn-fill { background: #ffb400; color: #000; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; transition: 0.3s; font-size: 0.9rem; }
+        .btn-line { background: transparent; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: bold; border: 1px solid #333; transition: 0.3s; font-size: 0.9rem; }
+        .btn-fill:hover { background: #e6a200; transform: translateY(-2px); }
+        .btn-line:hover { border-color: #ffb400; background: rgba(255,180,0,0.05); }
+
+        /* FOOTER STATS (ESTILO UNIFICADO) */
+        .stats {
+            background: #000;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 5%;
+            border-top: 1px solid #222;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .item { text-align: center; min-width: 120px; flex: 1; }
+        .item strong { display: block; color: #ffb400; font-size: 1.2rem; margin-bottom: 5px; }
+        .item p { font-size: 0.65rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* RESPONSIVE PARA CELULAR */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 10px; text-align: center; padding: 15px 20px; }
+            .menu { justify-content: center; width: 100%; }
+            .hero { padding: 40px 15px; }
+            h1 { font-size: 2.8rem; }
+            .stats { justify-content: center; }
+            .item { min-width: 40%; } /* 2 por fila en móvil */
+            .btns { width: 100%; flex-direction: column; align-items: stretch; }
+            .btn-fill, .btn-line { text-align: center; }
+        }
+    </style>
 </head>
 <body>
-    <div class="main-container home">
-        <nav class="navbar">
-            <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
-            <div class="menu">
-                <a href="index.html" class="active">Inicio</a>
-                <a href="horarios.html">Horarios</a>
-                <a href="rutas.html">Rutas</a>
-                <a href="noticias.html">Noticias</a>
-                <a href="consultas.html">Consultas</a>
-            </div>
-        </nav>
 
-        <section class="hero">
-            <div class="badge">🚌 SERVICIO DE TRANSPORTE UNIVERSITARIO</div>
-            <h1>Movilidad<br><span class="yellow">Universitaria</span></h1>
-            <p class="ruta-txt">Ruta Ventanilla</p>
-            <p class="desc">La UNAC pone a disposición de sus estudiantes el servicio de movilidad para el traslado desde Ventanilla hacia el Campus Universitario (Ciclo 2026-A).</p>
-            
-            <div class="btns">
-                <a href="horarios.html" class="btn-fill">🕒 Ver Horarios</a>
-                <a href="#" class="btn-line">📞 Consultas</a>
-            </div>
-        </section>
+    <nav class="navbar">
+        <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
+        <div class="menu">
+            <a href="index.html" class="active">Inicio</a>
+            <a href="horarios.html">Horarios</a>
+            <a href="rutas.html">Rutas</a>
+            <a href="noticias.html">Noticias</a>
+            <a href="#" class="consultas">Consultas</a>
+        </div>
+    </nav>
 
-        <footer class="stats">
-            <div class="item"><strong>2 Unidades</strong><p>Vehículos</p></div>
-            <div class="item"><strong>~35 km</strong><p>Recorrido</p></div>
-            <div class="item"><strong>~55 min</strong><p>Duración</p></div>
-            <div class="item"><strong>+600</strong><p>Beneficiados</p></div>
-        </footer>
-    </div>
+    <section class="hero">
+        <div class="badge">🚌 SERVICIO DE TRANSPORTE UNIVERSITARIO</div>
+        <h1>Movilidad<br><span class="yellow">Universitaria</span></h1>
+        <p class="ruta-txt">Ruta Ventanilla</p>
+        <p class="desc">La UNAC pone a disposición de sus estudiantes el servicio de movilidad para el traslado desde Ventanilla hacia el Campus Universitario (Ciclo 2026-A).</p>
+        
+        <div class="btns">
+            <a href="horarios.html" class="btn-fill">🕒 Ver Horarios</a>
+            <a href="#" class="btn-line">📞 Consultas</a>
+        </div>
+    </section>
+
+    <footer class="stats">
+        <div class="item"><strong>2 Unidades</strong><p>Vehículos</p></div>
+        <div class="item"><strong>~35 km</strong><p>Recorrido</p></div>
+        <div class="item"><strong>~55 min</strong><p>Duración</p></div>
+        <div class="item"><strong>+600</strong><p>Beneficiados</p></div>
+    </footer>
+
 </body>
 </html>
