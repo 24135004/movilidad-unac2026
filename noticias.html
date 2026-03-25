@@ -37,7 +37,7 @@
         .menu a:hover, .menu a.active { color: #ffb400; }
         .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
 
-        /* CABECERA SEGÚN IMAGEN */
+        /* CABECERA */
         .hero-header {
             text-align: center;
             padding: 60px 20px 40px;
@@ -73,8 +73,8 @@
             padding: 30px;
             margin-bottom: 40px;
         }
-        .news-tag { color: #ffb400; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px; display: block; text-transform: uppercase; }
-        .news-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid #ffb400; padding-bottom: 10px; line-height: 1.3; }
+        .news-tag { color: #ffb400; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        .news-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid #ffb400; padding-bottom: 10px; }
         
         /* DASHBOARD */
         .dashboard-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
@@ -86,24 +86,44 @@
         .sub-title { color: #ffb400; font-weight: bold; margin-bottom: 15px; display: block; }
         .item { margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #ffb400; }
         
-        .status-box { padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 0.95rem; }
+        .status-box { padding: 15px; border-radius: 8px; margin: 15px 0; }
         .green { background: rgba(45, 164, 78, 0.15); border: 1px solid #2da44e; }
         .red { background: rgba(248, 81, 73, 0.15); border: 1px solid #f85149; }
 
-        .footer-sig { margin-top: 30px; font-weight: bold; color: #ffb400; text-align: right; font-size: 0.95rem; }
-        .thanks-footer { text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 25px; color: #fff; }
+        .footer-sig { margin-top: 30px; font-weight: bold; color: #ffb400; text-align: right; }
+        .thanks-footer { text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 20px; color: #fff; }
 
-        /* --- SOLO ESTO SE AGREGA PARA EL CELULAR --- */
+        /* AJUSTES EXCLUSIVOS PARA CELULAR (IGUAL A LAS CAPTURAS) */
         @media (max-width: 768px) {
-            .navbar { padding: 10px 2%; }
-            .menu { gap: 10px; }
-            .menu a { font-size: 0.65rem; }
-            .logo-top, .logo-bottom { font-size: 0.7rem; }
-            .hero-header h1 { font-size: 2.2rem; }
-            .hero-header p.desc { font-size: 0.9rem; }
-            .news-card { padding: 20px 15px; }
-            .news-title { font-size: 1.2rem; }
-            .chart-card { flex: 1 1 100%; max-width: 100%; }
+            .navbar { 
+                flex-direction: column; 
+                padding: 15px; 
+                height: auto;
+            }
+            .logo-container { text-align: center; margin-bottom: 15px; }
+            .menu { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px; 
+            }
+            .menu a { font-size: 0.75rem; }
+            .btn-consultas { padding: 4px 10px; }
+
+            .hero-header { padding: 40px 15px; }
+            .hero-header h1 { font-size: 2.5rem; line-height: 1.1; }
+            .hero-header p.desc { font-size: 0.95rem; text-align: center; }
+
+            .news-card { padding: 20px; border-radius: 15px; }
+            .news-title { font-size: 1.3rem; text-align: left; }
+            
+            .chart-card { 
+                flex: 1 1 100%; 
+                max-width: 100%; 
+                margin-bottom: 10px;
+            }
+            
+            .footer-sig { text-align: center; font-size: 0.9rem; }
+            .thanks-footer { font-size: 1rem; }
         }
     </style>
 </head>
@@ -206,7 +226,7 @@
                     labels: ['SÍ', 'NO'],
                     datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
                 },
-                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 8 } } }, datalabels: commonOptions.plugins.datalabels } }
+                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 8 }, color: '#fff' } }, datalabels: commonOptions.plugins.datalabels } }
             });
         }
     </script>
