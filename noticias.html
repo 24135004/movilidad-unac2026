@@ -1,178 +1,42 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movilidad UNAC - Gestión 2026-A</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-color: #000; 
-            color: #fff; 
-            font-family: 'Segoe UI', sans-serif;
-            min-height: 100vh;
-        }
-
-        /* NAVBAR FIJA */
-        .navbar {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 4%;
-            background: #000;
-            border-bottom: 1px solid #1a1a1a;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo-container { text-align: left; }
-        .logo-top { color: #fff; font-weight: bold; font-size: 0.85rem; }
-        .logo-bottom { color: #ffb400; font-weight: bold; font-size: 0.85rem; }
-        
-        .menu { display: flex; align-items: center; gap: 20px; }
-        .menu a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .menu a:hover, .menu a.active { color: #ffb400; }
-        .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
-
-        /* SECCIONES */
-        .section { display: none; width: 100%; max-width: 1000px; margin: 0 auto; padding: 60px 20px; text-align: center; }
-        .section.active { display: block; }
-
-        /* ESTILOS DE NOTICIAS (Tu reporte) */
-        .report-header { color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
-        .report-main-title { font-size: 3rem; margin-bottom: 20px; font-weight: 800; }
-        .report-subtitle { color: #aaa; font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; }
-        .data-list { text-align: left; max-width: 850px; margin: 0 auto 40px; color: #ccc; line-height: 1.8; }
-        .data-item { margin-bottom: 15px; border-left: 3px solid #ffb400; padding-left: 15px; }
-
-        /* GRÁFICAS */
-        .dashboard-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 40px; }
-        .chart-card { background: #fff; border-radius: 8px; padding: 20px; flex: 1 1 280px; max-width: 310px; color: #000; }
-        .chart-card h3 { font-size: 11px; margin-bottom: 15px; font-weight: bold; text-align: center; }
-
-        /* ESTILO PARA OTRAS SECCIONES (Placeholder) */
-        .placeholder-content { background: #111; padding: 100px 20px; border-radius: 15px; border: 1px dashed #333; }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo-container">
-            <div class="logo-top">UNIVERSIDAD NACIONAL DEL CALLAO</div>
-            <div class="logo-bottom">MOVILIDAD UNIVERSITARIA</div>
-        </div>
-        <div class="menu">
-            <a onclick="showSection('inicio')">Inicio</a>
-            <a onclick="showSection('horarios')">Horarios</a>
-            <a onclick="showSection('rutas')">Rutas</a>
-            <a id="nav-noticias" class="active" onclick="showSection('noticias')">Noticias</a>
-            <a onclick="showSection('consultas')" class="btn-consultas">Consultas</a>
-        </div>
-    </nav>
-
-    <div id="inicio" class="section">
-        <div class="placeholder-content">
-            <h1>Bienvenido a Movilidad UNAC</h1>
-            <p style="color: #888; margin-top: 20px;">Selecciona una opción del menú para navegar.</p>
-        </div>
+<nav class="navbar">
+    <div class="logo-container">
+        <div class="logo-top">UNIVERSIDAD NACIONAL DEL CALLAO</div>
+        <div class="logo-bottom">MOVILIDAD UNIVERSITARIA</div>
     </div>
-
-    <div id="horarios" class="section">
-        <h1>Horarios Disponibles</h1>
-        <p style="color: #aaa; margin: 20px 0;">Consulta aquí los turnos para el ciclo 2026-A.</p>
+    <div class="menu">
+        <a href="index.html">Inicio</a>
+        <a href="horarios.html">Horarios</a>
+        <a href="rutas.html">Rutas</a>
+        <a href="noticias.html" class="active">Noticias</a>
+        <a href="consultas.html" class="btn-consultas">Consultas</a>
     </div>
+</nav>
 
-    <div id="rutas" class="section">
-        <h1>Rutas de Transporte</h1>
-        <p style="color: #aaa; margin: 20px 0;">Explora los paraderos y recorridos de la ruta Ventanilla.</p>
-    </div>
-
-    <div id="noticias" class="section active">
-        <p class="report-header">Mantente informado</p>
-        <h1 class="report-main-title">Noticias y Avisos</h1>
-        <p class="report-subtitle">Resultados oficiales y comunicados del Delegado Sebastian.</p>
-
-        <div class="data-list">
-            <h3 style="color: #fff; margin-bottom: 20px;">📢 RESULTADOS RUMBO AL CICLO 2026-A</h3>
-            <div class="data-item"><b>Respaldo:</b> 94.3% de aprobación a la gestión.</div>
-            <div class="data-item"><b>Inicio de Clases:</b> Programado para el 1 de abril.</div>
-            <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #ffb400;">Atentamente, Movilidad Ventanilla</p>
-        </div>
-
-        <div class="dashboard-container">
-            <div class="chart-card"><h3>FACULTAD</h3><canvas id="chartFacultad"></canvas></div>
-            <div class="chart-card"><h3>DEMANDA HORARIOS</h3><canvas id="chartHorarios"></canvas></div>
-            <div class="chart-card"><h3>CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
-        </div>
-    </div>
-
-    <div id="consultas" class="section">
-        <h1>Canales de Consulta</h1>
-        <p style="color: #aaa; margin: 20px 0;">Comunícate directamente con los delegados de ruta.</p>
-    </div>
-
-    <script>
-        // Función para cambiar de pestaña/sección
-        function showSection(sectionId) {
-            // Ocultar todas las secciones
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            // Quitar clase activa de los enlaces
-            document.querySelectorAll('.menu a').forEach(link => link.classList.remove('active'));
-            
-            // Mostrar la seleccionada
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Marcar el botón del menú como activo
-            event.currentTarget.classList.add('active');
-
-            // Si entra a noticias, recargar las gráficas para que se vean bien
-            if(sectionId === 'noticias') { renderCharts(); }
-        }
-
-        Chart.register(ChartDataLabels);
-        function renderCharts() {
-            // (Mismo código de gráficas que ya tienes configurado)
-            const commonOptions = { plugins: { datalabels: { color: '#fff', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } };
-            
-            new Chart(document.getElementById('chartFacultad'), {
-                type: 'pie',
-                data: {
-                    labels: ['FCE', 'FCC', 'FCA', 'FIEE', 'FIQ', 'FIARN', 'Otros'],
-                    datasets: [{ data: [16.8, 11.3, 11.3, 11.3, 9.8, 7.5, 32], backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a'] }]
-                },
-                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 8 } } }, datalabels: commonOptions.plugins.datalabels } }
-            });
-
-            new Chart(document.getElementById('chartHorarios'), {
-                type: 'bar',
-                data: {
-                    labels: ['6:00 PM', '5:15 AM', '2:30 PM', '10:15 PM'],
-                    datasets: [{ data: [74.3, 68.3, 46.3, 32], backgroundColor: '#a2d2df' }]
-                },
-                options: { indexAxis: 'y', scales: { x: { display: false } }, plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'start', color: '#444', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } }
-            });
-
-            new Chart(document.getElementById('chartVoto'), {
-                type: 'pie',
-                data: {
-                    labels: ['SÍ', 'NO'],
-                    datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
-                },
-                options: { plugins: { legend: { position: 'bottom' }, datalabels: commonOptions.plugins.datalabels } }
-            });
-        }
-
-        // Cargar gráficas al inicio
-        window.onload = renderCharts;
-    </script>
-</body>
-</html>
+<style>
+    /* Asegúrate de tener estos estilos para que se vea como en tu imagen */
+    .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 4%;
+        background: #000;
+        border-bottom: 1px solid #1a1a1a;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo-container { text-align: left; line-height: 1.2; }
+    .logo-top { color: #fff; font-weight: bold; font-size: 0.85rem; }
+    .logo-bottom { color: #ffb400; font-weight: bold; font-size: 0.85rem; }
+    
+    .menu { display: flex; align-items: center; gap: 20px; }
+    .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.8rem;
+        transition: 0.3s;
+    }
+    .menu a:hover, .menu a.active { color: #ffb400; }
+    .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
+</style>
