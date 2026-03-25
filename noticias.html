@@ -73,57 +73,37 @@
             padding: 30px;
             margin-bottom: 40px;
         }
-        .news-tag { color: #ffb400; font-weight: bold; font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        .news-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid #ffb400; padding-bottom: 10px; }
+        .news-tag { color: #ffb400; font-weight: bold; font-size: 0.85rem; margin-bottom: 10px; display: block; text-transform: uppercase; }
+        .news-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid #ffb400; padding-bottom: 10px; line-height: 1.3; }
         
         /* DASHBOARD */
-        .dashboard-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 30px 0; }
+        .dashboard-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 25px 0; }
         .chart-card { background: #fff; border-radius: 8px; padding: 15px; flex: 1 1 250px; max-width: 280px; color: #000; }
-        .chart-card h3 { font-size: 10px; text-align: center; margin-bottom: 10px; color: #333; }
+        .chart-card h3 { font-size: 10px; text-align: center; margin-bottom: 10px; color: #333; font-weight: bold; }
 
         /* LISTAS Y SECCIONES */
         .sub-section { margin-top: 25px; }
-        .sub-title { color: #ffb400; font-weight: bold; margin-bottom: 15px; display: block; }
+        .sub-title { color: #ffb400; font-weight: bold; margin-bottom: 15px; display: block; font-size: 1rem; }
         .item { margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #ffb400; }
         
-        .status-box { padding: 15px; border-radius: 8px; margin: 15px 0; }
+        .status-box { padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 0.95rem; }
         .green { background: rgba(45, 164, 78, 0.15); border: 1px solid #2da44e; }
         .red { background: rgba(248, 81, 73, 0.15); border: 1px solid #f85149; }
 
-        .footer-sig { margin-top: 30px; font-weight: bold; color: #ffb400; text-align: right; }
-        .thanks-footer { text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 20px; color: #fff; }
+        .footer-sig { margin-top: 30px; font-weight: bold; color: #ffb400; text-align: right; font-size: 0.95rem; }
+        .thanks-footer { text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 25px; color: #fff; }
 
-        /* AJUSTES EXCLUSIVOS PARA CELULAR (IGUAL A LAS CAPTURAS) */
+        /* RESPONSIVE CELULAR */
         @media (max-width: 768px) {
-            .navbar { 
-                flex-direction: column; 
-                padding: 15px; 
-                height: auto;
-            }
+            .navbar { flex-direction: column; padding: 15px; }
             .logo-container { text-align: center; margin-bottom: 15px; }
-            .menu { 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 10px; 
-            }
+            .menu { justify-content: center; gap: 10px; }
             .menu a { font-size: 0.75rem; }
-            .btn-consultas { padding: 4px 10px; }
-
-            .hero-header { padding: 40px 15px; }
-            .hero-header h1 { font-size: 2.5rem; line-height: 1.1; }
-            .hero-header p.desc { font-size: 0.95rem; text-align: center; }
-
-            .news-card { padding: 20px; border-radius: 15px; }
-            .news-title { font-size: 1.3rem; text-align: left; }
-            
-            .chart-card { 
-                flex: 1 1 100%; 
-                max-width: 100%; 
-                margin-bottom: 10px;
-            }
-            
-            .footer-sig { text-align: center; font-size: 0.9rem; }
-            .thanks-footer { font-size: 1rem; }
+            .hero-header h1 { font-size: 2.5rem; }
+            .news-card { padding: 20px; }
+            .news-title { font-size: 1.25rem; }
+            .chart-card { flex: 1 1 100%; max-width: 100%; }
+            .footer-sig { text-align: center; }
         }
     </style>
 </head>
@@ -152,46 +132,60 @@
     <div class="container">
 
         <div class="news-card">
-            <span class="news-tag">25 MARZO, 2026</span>
+            <span class="news-tag">REPORTE OFICIAL</span>
             <h2 class="news-title">📢 REPORTE DE GESTIÓN: RESULTADOS RUMBO AL CICLO 2026-A 🚌💨</h2>
-            <p>¡Hola, comunidad de la Ruta Ventanilla! 👋 😊 Tal como lo prometimos, la transparencia es la base de nuestra organización. Tras el cierre del formulario de <b>Actualización Obligatoria de Datos</b>, compartimos con ustedes los resultados que respaldan nuestras próximas gestiones ante las autoridades para este inicio de clases el <b>1 de abril</b>. 📍🗺️</p>
+            <p>¡Hola, comunidad de la Ruta Ventanilla! 👋😊 Tal como lo prometimos, la transparencia es la base de nuestra organización. Tras el cierre del formulario de <b>Actualización Obligatoria de Datos</b>, compartimos con ustedes los resultados que respaldan nuestras próximas gestiones ante las autoridades para este inicio de clases el <b>1 de abril</b>. 🎓📚</p>
             
-            <div class="dashboard-grid">
-                <div class="chart-card"><h3>FACULTAD</h3><canvas id="chartFacultad"></canvas></div>
-                <div class="chart-card"><h3>HORARIOS</h3><canvas id="chartHorarios"></canvas></div>
-                <div class="chart-card"><h3>VOTO DE CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
-            </div>
+            <div class="sub-section">
+                <span class="sub-title">📊 Lo que dicen nuestros datos:</span>
+                <div class="dashboard-grid">
+                    <div class="chart-card"><h3>FACULTAD</h3><canvas id="chartFacultad"></canvas></div>
+                    <div class="chart-card"><h3>HORARIOS</h3><canvas id="chartHorarios"></canvas></div>
+                    <div class="chart-card"><h3>VOTO DE CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
+                </div>
 
-            <div class="item"><b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un <b>94.3% de aprobación</b> a la gestión actual. ✅🤝</div>
-            <div class="item"><b>Demanda de Horarios:</b> Turnos <b>Tarde-Noche (6:00 PM)</b> y <b>Mañana (5:15 AM)</b> son los más críticos. ⏳🚌</div>
+                <div class="item"><b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un <b>94.3% de aprobación</b> a la gestión actual. Este voto de confianza nos motiva a seguir luchando por un servicio de calidad. ✅🤝</div>
+                <div class="item"><b>Demanda de Horarios:</b> Hemos identificado que el turno <b>Tarde-Noche (6:00 PM)</b> y el de la <b>Mañana (5:15 AM)</b> son los más críticos. Usaremos estos números para exigir que las unidades cubran la capacidad necesaria. ⏳🚍</div>
+                <div class="item"><b>Participación Total:</b> Estudiantes de todas las facultades, liderados por <b>FCE, FCC y FCA</b>, ya están registrados. ¡Somos una sola comunidad universitaria! 🏛️👥</div>
+            </div>
             
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #ffb400;">⚠️ <b>RECORDATORIO FINAL:</b> El padrón ha sido actualizado. Este registro es <b>VITAL</b> para garantizar tu cupo en este <b>2026-A</b>. ☀️🛡️</p>
+            <p style="margin-top: 20px; font-size: 0.95rem; color: #ffb400;">⚠️ <b>RECORDATORIO FINAL:</b> El padrón oficial ha sido actualizado. Como se avisó, este registro es <b>VITAL</b> para garantizar tu cupo y seguridad en la ruta. El verano se acaba, pero nuestro compromiso para este <b>2026-A</b> está más fuerte que nunca. ☀️🛡️</p>
             
-            <p class="footer-sig">Atentamente, Delegado Sebastian – Movilidad Ventanilla 👦🏻🚌</p>
-            <p class="thanks-footer">¡Gracias por ser parte del cambio! Nos vemos en la ruta este 30 de abril. 🗺️🙌</p>
+            <p class="footer-sig">Atentamente, Delegado Sebastian – Movilidad Ventanilla 🫡🚌</p>
+            <p class="thanks-footer">¡Gracias por ser parte del cambio! Nos vemos en la ruta este 30 de marzo. 🛣️🙌</p>
         </div>
 
         <div class="news-card">
             <span class="news-tag">NUEVA LOGÍSTICA</span>
             <h2 class="news-title">🚀 ¡INNOVACIÓN TECNOLÓGICA Y ORDEN EN LA RUTA! 🚌📲</h2>
             
-            <p>¡Hola de nuevo! Seguimos modernizando nuestra gestión para que este <b>30 de abril</b> todo sea más eficiente. Presentamos la nueva logística digital para eliminar colas:</p>
+            <p>¡Hola de nuevo, compañeros y compañeras! 👋😊 Seguimos modernizando nuestra gestión para que este <b>30 de abril</b> todo sea más eficiente. Como su delegado 🫡, les presento la nueva logística digital diseñada para eliminar las colas y asegurar el orden:</p>
 
             <div class="sub-section">
                 <span class="sub-title">✅ ASÍ SERÁ EL NUEVO PROCESO DE ACCESO:</span>
+                <p style="margin-bottom: 15px;">Al completar el formulario, el sistema validará tus datos automáticamente y enviará una respuesta inmediata a tu Gmail:</p>
                 <div class="status-box green">
-                    <b>¡VERIFICACIÓN CORRECTA! (Pase Verde):</b> Recibirás tu correo con tu <b>NÚMERO DE ASIENTO OFICIAL</b> (40 asientos disponibles). 💺🔢
+                    <b>¡VERIFICACIÓN CORRECTA! (Pase Verde):</b> Si tus datos son válidos, recibirás tu correo de confirmación con tu <b>NÚMERO DE ASIENTO OFICIAL</b> (Cupos limitados a 40 asientos). 💺🔢
                 </div>
                 <div class="status-box red">
-                    <b>VERIFICACIÓN INCORRECTA (Aviso Rojo):</b> Si los datos son erróneos, NO se asignará asiento ya que el registro no será válido pal padrón. ❌⚠️
+                    <b>VERIFICACIÓN INCORRECTA (Aviso Rojo):</b> Si ingresas mal tu DNI o Código, el sistema rechazará la solicitud. <b>IMPORTANTE:</b> NO se te asignará un asiento, ya que el registro no será válido. ❌⚠️
                 </div>
             </div>
 
             <div class="sub-section">
                 <span class="sub-title">⏳ LOGÍSTICA EN TIEMPO REAL:</span>
-                <div class="item"><b>Cierre de Padrón:</b> El sistema envía respuesta automática al completar el formulario. 🙃</div>
-                <div class="item"><b>Abordaje Rápido:</b> ¡Olvídate de listas manuales! Solo muestra el correo de verificación desde tu celular. 🤳✅</div>
+                <div class="item"><b>📅 Cierre de Padrón:</b> El formulario se procesa y envía automáticamente una vez hayas completado el formulario 🙃.</div>
+                <div class="item"><b>🚍 Llegada del Bus:</b> La movilidad estará en el punto de partida a las <b>6:00 PM (puntualidad)</b>.</div>
+                <div class="item"><b>🤳 Abordaje Rápido:</b> ¡Olvídate de hacer colas! Ya no habrá listas manuales. Para subir, solo muestra el correo desde tu celular. ✅</div>
             </div>
+
+            <div class="sub-section">
+                <span class="sub-title">⚠️ SOBRE LOS ASIENTOS (ACUERDO GENERAL):</span>
+                <div class="item"><b>🏆 Con Registro Válido:</b> Quienes reciban su ¡Verificación Correcta! tienen su asiento asegurado y numerado.</div>
+                <div class="item"><b>🚶 Sin Registro o Incorrectos:</b> Si no llenaste el formulario, podrás subir a la unidad, pero viajarás sin asiento asignado. <b>¡La movilidad es GRATUITA PARA TODOS!</b> 🟢💺</div>
+            </div>
+
+            <p style="margin-top: 20px;"><b>💡 RECOMENDACIONES:</b> Ten tu batería cargada y el correo abierto antes de llegar a la puerta para un abordaje fluido. 🎓📚</p>
 
             <p class="footer-sig">Atentamente, Delegado Sebastian – Innovación y Movilidad Ventanilla 🫡🚌</p>
         </div>
