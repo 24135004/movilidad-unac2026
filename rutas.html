@@ -38,26 +38,14 @@
         .main-content {
             width: 100%;
             max-width: 1100px;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
-        .subtitle { color: #888; margin-bottom: 30px; font-size: 0.95rem; }
-
-        /* BLOQUE INFORMATIVO (NUEVO) */
-        .info-header-box {
-            background: #0a0a0a;
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            text-align: left;
-            width: 100%;
-            line-height: 1.6;
-        }
-        .info-header-box strong { color: #fff; display: block; margin-bottom: 8px; font-size: 1.1rem; }
-        .info-header-box p { color: #aaa; font-size: 0.9rem; }
+        /* ENCABEZADO ESPECÍFICO DE LA IMAGEN */
+        .section-tag { color: #ffb400; font-size: 0.9rem; font-weight: bold; text-transform: none; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 3rem; font-weight: 800; margin-bottom: 15px; }
+        .section-description { color: #888; font-size: 1rem; max-width: 800px; margin: 0 auto 50px auto; line-height: 1.5; }
 
         /* GRID DE INFORMACIÓN */
         .grid-info {
@@ -69,38 +57,38 @@
         }
 
         .card-box {
-            background: #0a0a0a;
+            background: #11141b; /* Un tono un poco más azulado/oscuro como en la imagen */
             border: 1px solid #222;
-            border-radius: 15px;
+            border-radius: 12px;
             padding: 25px;
         }
 
-        h2 { color: #ffb400; font-size: 1.1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        h2 { color: #ffb400; font-size: 1rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-weight: 700; }
 
-        .stop-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .stop-item { background: #111; padding: 10px; border-radius: 8px; font-size: 0.85rem; border: 1px solid #222; display: flex; align-items: center; gap: 8px; }
-        .stop-item.highlight { border: 1px solid #ffb400; color: #ffb400; font-weight: bold; }
+        .stop-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .stop-item { background: #1a1e26; padding: 12px; border-radius: 6px; font-size: 0.85rem; border: 1px solid #2a2f3a; display: flex; align-items: center; gap: 10px; color: #ccc; }
+        .stop-item.highlight { border: 1px solid #ffb400; color: #fff; background: #1a1e26; }
 
-        .doc-item { background: #111; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #ffb400; }
-        .doc-item b { display: block; font-size: 0.9rem; color: #ffb400; margin-bottom: 3px; }
+        .doc-item { background: #1a1e26; padding: 15px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #ffb400; }
+        .doc-item b { display: block; font-size: 0.9rem; color: #ffb400; margin-bottom: 5px; }
         .doc-item p { font-size: 0.8rem; color: #888; }
 
-        .alert-box { background: rgba(255, 68, 68, 0.1); border: 1px solid #ff4444; padding: 15px; border-radius: 10px; border-left: 5px solid #ff4444; margin-top: 15px; }
-        .alert-box b { color: #ff4444; display: block; margin-bottom: 5px; font-size: 0.85rem; }
-        .alert-box p { font-size: 0.8rem; color: #ffaaaa; line-height: 1.4; }
+        .alert-box { background: rgba(255, 68, 68, 0.05); border: 1px solid #442222; padding: 20px; border-radius: 10px; border-left: 5px solid #ff4444; margin-top: 20px; }
+        .alert-box b { color: #ff4444; display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; }
+        .alert-box p { font-size: 0.85rem; color: #ffaaaa; line-height: 1.5; }
 
-        .map-section { width: 100%; background: #0a0a0a; border: 1px solid #222; border-radius: 15px; padding: 15px; margin-bottom: 40px; }
-        .map-header { text-align: left; margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
-        iframe { width: 100%; height: 400px; border-radius: 10px; filter: invert(90%) hue-rotate(180deg); }
+        .map-section { width: 100%; background: #11141b; border: 1px solid #222; border-radius: 12px; padding: 15px; margin-top: 20px; }
+        .map-header { text-align: left; margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        iframe { width: 100%; height: 450px; border-radius: 8px; filter: grayscale(1) invert(90%); border: none; }
 
-        .stats { background: #0a0a0a; display: flex; justify-content: space-around; padding: 25px 5%; border-top: 1px solid #222; width: 100%; }
-        .item strong { display: block; color: #ffb400; font-size: 1.1rem; }
-        .item p { font-size: 0.7rem; color: #666; margin-top: 5px; text-transform: uppercase; }
+        .stats { background: #000; display: flex; justify-content: space-around; padding: 30px 5%; border-top: 1px solid #222; width: 100%; margin-top: 50px; }
+        .item strong { display: block; color: #ffb400; font-size: 1.2rem; }
+        .item p { font-size: 0.7rem; color: #666; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
         @media (max-width: 800px) {
             .grid-info { grid-template-columns: 1fr; }
             .stop-list { grid-template-columns: 1fr; }
-            .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -117,17 +105,16 @@
     </nav>
 
     <main class="main-content">
-        <h1>Nuestras Rutas</h1>
-        <p class="subtitle">Visualiza el recorrido estratégico diseñado para la comunidad universitaria.</p>
-
-        <div class="info-header-box">
-            <strong>🚍 Servicio de Movilidad Universitaria: Ruta Ventanilla 📍</strong>
-            <p>Comprometidos con tu puntualidad académica, presentamos la programación vigente para este semestre. Los horarios están sujetos a cambios excepcionales por disposición institucional o semanas de evaluación, los cuales serán notificados oportunamente por este medio. 🎓✨</p>
-        </div>
+        
+        <span class="section-tag">Recorrido y paradas</span>
+        <h1 class="section-title">Rutas y Puntos de Partida</h1>
+        <p class="section-description">
+            Conoce el recorrido completo de la Ruta Ventanilla, los puntos de parada y la documentación necesaria para acceder al servicio.
+        </p>
 
         <div class="grid-info">
             <div class="card-box">
-                <h2>📍 Paraderos Oficiales</h2>
+                <h2>📍 PARADEROS OFICIALES</h2>
                 <div class="stop-list">
                     <div class="stop-item">✅ Sede UNAC (Inicio)</div>
                     <div class="stop-item">✅ Paradero Hogar</div>
@@ -147,35 +134,39 @@
             </div>
 
             <div class="card-box">
-                <h2>📄 Requisitos</h2>
+                <h2>📄 DOCUMENTACIÓN REQUERIDA</h2>
                 <div class="doc-item">
-                    <b>Carnet Universitario</b>
-                    <p>Vigente y obligatorio para el ingreso.</p>
+                    <b>Carnet Universitario Vigente</b>
+                    <p>Obligatorio para acceder al servicio de movilidad.</p>
+                </div>
+                <div class="doc-item">
+                    <b>DNI Original</b>
+                    <p>Opcional para verificación de identidad adicional.</p>
                 </div>
                 <div class="doc-item">
                     <b>Constancia de Matrícula</b>
-                    <p>Semestre 2026-A (Si no tienes carnet).</p>
+                    <p>Actualizada del semestre vigente, en caso de no tener carnet universitario.</p>
                 </div>
 
                 <div class="alert-box">
-                    <b>❕ AVISO DEL DELEGADO ❕</b>
-                    <p>Por alta demanda, el último paradero de recojo es <strong>CARSA VENTANILLA</strong>. No se confíen.</p>
-                    <p style="margin-top:8px;">Consultar espacio disponible con el delegado para paraderos posteriores. 🫡</p>
+                    <b>❗ DATO ADICIONAL IMPORTANTE ❗</b>
+                    <p>Debido a la alta demanda, el último paradero para recoger pasajeros es <strong>CARSA VENTANILLA 🚌</strong>. No se confíen 😬.</p>
+                    <p style="margin-top:10px;">Comuníquense con el <strong>delegado 🙋‍♂️</strong> para ver si hay espacio disponible para subir en los siguientes paraderos 😥.</p>
                 </div>
             </div>
         </div>
 
         <div class="map-section">
-            <div class="map-header">🗺️ Mapa en Tiempo Real: Campus Bellavista</div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d135356.27764048547!2d-77.16173506495767!3d-11.945822807368941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x9105d526b243bda5%3A0x4f54a232b468d4dd!2sUNAC%20-%20VENTANILLA%2C%205VG8%2BJM6%2C%20Ventanilla%2007076!3m2!1d-11.823452099999999!2d-77.13334929999999!4m3!3m2!1d-11.8252305!2d-77.1234052!4m3!3m2!1d-11.843182599999999!2d-77.101874!4m3!3m2!1d-11.8375611!2d-77.11113209999999!4m5!1s0x9105d43d3b9d9f15%3A0x7484f44b11f271b!2sPolicl%C3%ADnico%20Emanuel%2C%20Ventanilla%2007076!3m2!1d-11.841529999999999!2d-77.11502!4m5!1s0x9105d41212110f83%3A0x3381ebbdfb7c3a11!2sCajamarca%2C%20Mi%20Per%C3%BA%2007056!3m2!1d-11.85413!2d-77.12089!4m3!3m2!1d-11.859558199999999!2d-77.124529!4m3!3m2!1d-11.8754478!2d-77.1269141!4m3!3m2!1d-12.0480583!2d-77.11540509999999!4m5!1s0x9105cb910984762b%3A0x104327c627fa29ad!2sUniversidad%20Nacional%20del%20Callao%2C%20Av.%20Juan%20Pablo%20%E2%85%A1%20306%2C%20Bellavista%2007011!3m2!1d-12.0613052!2d-77.11724869999999!5e1!3m2!1ses-419!2spe!4v1774389008054!5m2!1ses-419!2spe" allowfullscreen="" loading="lazy"></iframe>
+            <div class="map-header">🗺️ Mapa: Campus UNAC – Bellavista, Callao</div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15605.345678!2d-77.1189!3d-12.0621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAzJzQzLjYiUyA3N8KwMDcnMDguMCJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe"></iframe>
         </div>
     </main>
 
     <footer class="stats">
-        <div class="item"><strong>~33.8 km</strong><p>Distancia Total</p></div>
-        <div class="item"><strong>En Servicio</strong><p>Estado</p></div>
-        <div class="item"><strong>Limitado</strong><p>Capacidad</p></div>
-        <div class="item"><strong>Directa</strong><p>Ruta</p></div>
+        <div class="item"><strong>LUNES A VIERNES</strong><p>FRECUENCIA</p></div>
+        <div class="item"><strong>EN SERVICIO</strong><p>ESTADO</p></div>
+        <div class="item"><strong>40 CUPOS</strong><p>CAPACIDAD</p></div>
+        <div class="item"><strong>DIRECTA</strong><p>RUTA</p></div>
     </footer>
 
 </body>
