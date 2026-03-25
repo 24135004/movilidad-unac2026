@@ -11,74 +11,111 @@
         body { 
             background-color: #000; 
             color: #fff; 
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center;
             min-height: 100vh;
         }
 
-        /* NAVBAR (Restaurada de tu segunda imagen/referencia) */
+        /* NAVBAR - CORREGIDA SEGÚN IMAGEN */
         .navbar {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
-            background: #0a0a0a;
-            border-bottom: 1px solid #222;
+            padding: 12px 4%;
+            background: #000; /* Fondo negro puro */
+            border-bottom: 1px solid #1a1a1a;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .logo { font-weight: bold; font-size: 0.8rem; line-height: 1.2; }
-        .logo span { color: #ffb400; }
-        .menu a { color: #fff; text-decoration: none; font-size: 0.75rem; padding: 5px; margin-left: 10px; }
-        .menu a.active { color: #ffb400; font-weight: bold; }
+        .logo-container {
+            text-align: left;
+        }
+        .logo-top {
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .logo-bottom {
+            color: #ffb400; /* Amarillo/Dorado del logo */
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            color: #ffb400;
+        }
+        .menu a.active {
+            color: #ffb400;
+        }
+        /* Botón Consultas con borde */
+        .btn-consultas {
+            border: 1px solid #ffb400;
+            padding: 6px 15px;
+            border-radius: 5px;
+        }
 
-        /* CONTENIDO PRINCIPAL (El reporte es ahora la página principal) */
+        /* CONTENIDO PRINCIPAL */
         .container { 
             width: 100%; 
-            max-width: 900px; 
+            max-width: 1000px; 
+            margin: 0 auto;
             padding: 60px 20px; 
             text-align: center; 
         }
 
-        /* ESTILO DE TÍTULOS DE LA IMAGEN */
-        .report-header { color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .report-main-title { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
-        .report-subtitle { color: #aaa; font-size: 1.1rem; margin-bottom: 50px; max-width: 750px; margin: 0 auto; line-height: 1.6; }
+        .report-header { color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+        .report-main-title { font-size: 3.5rem; margin-bottom: 20px; font-weight: 800; }
+        .report-subtitle { color: #aaa; font-size: 1.1rem; margin-bottom: 50px; line-height: 1.6; }
 
-        /* CUERPO DEL COMUNICADO */
-        .report-section-title { font-size: 1.5rem; font-weight: bold; margin: 40px 0 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .data-list { text-align: left; max-width: 800px; margin: 0 auto 40px; line-height: 1.8; color: #ccc; }
+        .report-section-title { font-size: 1.5rem; font-weight: bold; margin: 40px 0 20px; }
+        .data-list { text-align: left; max-width: 850px; margin: 0 auto 40px; color: #ccc; line-height: 1.8; }
         .data-item { margin-bottom: 15px; border-left: 3px solid #ffb400; padding-left: 15px; }
-        .data-item b { color: #fff; }
 
-        /* CONTENEDOR DE GRÁFICAS */
+        /* DASHBOARD */
         .dashboard-container { 
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 50px; padding-bottom: 50px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 50px; 
         }
         .chart-card { 
-            background: #fff; border-radius: 8px; padding: 20px; flex: 1 1 280px; 
+            background: #fff; border-radius: 8px; padding: 20px; flex: 1 1 300px; 
             max-width: 320px; color: #000;
         }
-        .chart-card h3 { font-size: 11px; margin-bottom: 15px; color: #202124; font-weight: bold; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .chart-card h3 { font-size: 12px; margin-bottom: 15px; color: #333; font-weight: bold; text-align: center; }
 
         @media (max-width: 768px) {
-            .report-main-title { font-size: 2.5rem; }
-            .chart-card { max-width: 100%; }
+            .navbar { flex-direction: column; gap: 15px; padding: 15px; }
+            .menu { gap: 10px; }
+            .report-main-title { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body onload="renderCharts()">
 
     <nav class="navbar">
-        <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
+        <div class="logo-container">
+            <div class="logo-top">UNIVERSIDAD NACIONAL DEL CALLAO</div>
+            <div class="logo-bottom">MOVILIDAD UNIVERSITARIA</div>
+        </div>
         <div class="menu">
             <a href="#">Inicio</a>
+            <a href="#">Horarios</a>
+            <a href="#">Rutas</a>
             <a href="#" class="active">Noticias</a>
-            <a href="#">Consultas</a>
+            <a href="#" class="btn-consultas">Consultas</a>
         </div>
     </nav>
 
@@ -90,54 +127,26 @@
         <h3 class="report-section-title">📢 REPORTE DE GESTIÓN: RESULTADOS 2026-A 🚌💨</h3>
         
         <div class="data-list">
-            <p style="margin-bottom: 20px;">¡Hola, comunidad de la Ruta Ventanilla! 👋 Compartimos los resultados que respaldan nuestras gestiones para el inicio de clases el <b>1 de abril</b>. 📍</p>
+            <p style="margin-bottom: 20px;">¡Hola, comunidad de la Ruta Ventanilla! 👋 Tras el cierre del formulario, compartimos los resultados que respaldan nuestras gestiones para este <b>1 de abril</b>. 📍</p>
             
-            <div class="data-item">
-                <b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un <b>94.3% de aprobación</b> a la gestión actual. ✅
-            </div>
-            <div class="data-item">
-                <b>Demanda de Horarios:</b> El turno <b>Tarde-Noche (6:00 PM)</b> y el de la <b>Mañana (5:15 AM)</b> son los más críticos. ⏳
-            </div>
-            <div class="data-item">
-                <b>Participación Total:</b> Estudiantes liderados por <b>FCE, FCC y FCA</b> ya están registrados. 🏛️
-            </div>
+            <div class="data-item"><b>Respaldo Contundente:</b> Contamos con un <b>94.3% de aprobación</b> a la gestión actual. ✅</div>
+            <div class="data-item"><b>Demanda de Horarios:</b> El turno <b>Tarde-Noche (6:00 PM)</b> es el más solicitado. ⏳</div>
             
             <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #ffb400;">Atentamente, Delegado Sebastian – Movilidad Ventanilla 👦🏻🚌</p>
         </div>
 
         <div class="dashboard-container">
-            <div class="chart-card">
-                <h3>FACULTAD (OBLIGATORIO)</h3>
-                <canvas id="chartFacultad"></canvas>
-            </div>
-            <div class="chart-card">
-                <h3>HORARIOS DE MOVILIDAD</h3>
-                <canvas id="chartHorarios"></canvas>
-            </div>
-            <div class="chart-card">
-                <h3>VOTO DE CONFIANZA</h3>
-                <canvas id="chartVoto"></canvas>
-            </div>
+            <div class="chart-card"><h3>FACULTAD</h3><canvas id="chartFacultad"></canvas></div>
+            <div class="chart-card"><h3>HORARIOS</h3><canvas id="chartHorarios"></canvas></div>
+            <div class="chart-card"><h3>VOTO DE CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
         </div>
-        
-        <p style="margin-bottom: 40px; font-weight: bold; color: #aaa;">¡Nos vemos en la ruta este 1 de abril! 🗺️🙌</p>
     </div>
 
     <script>
         Chart.register(ChartDataLabels);
-
         function renderCharts() {
-            const commonOptions = {
-                plugins: {
-                    datalabels: {
-                        color: '#fff',
-                        font: { weight: 'bold', size: 10 },
-                        formatter: (v) => v + '%'
-                    }
-                }
-            };
+            const commonOptions = { plugins: { datalabels: { color: '#fff', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } };
 
-            // 1. Facultad
             new Chart(document.getElementById('chartFacultad'), {
                 type: 'pie',
                 data: {
@@ -147,50 +156,25 @@
                         backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a']
                     }]
                 },
-                options: {
-                    plugins: {
-                        legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 8 } } },
-                        datalabels: commonOptions.plugins.datalabels
-                    }
-                }
+                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 8 } } }, datalabels: commonOptions.plugins.datalabels } }
             });
 
-            // 2. Horarios
             new Chart(document.getElementById('chartHorarios'), {
                 type: 'bar',
                 data: {
                     labels: ['6:00 PM', '5:15 AM', '2:30 PM', '10:15 PM'],
-                    datasets: [{
-                        data: [74.3, 68.3, 46.3, 32],
-                        backgroundColor: '#a2d2df'
-                    }]
+                    datasets: [{ data: [74.3, 68.3, 46.3, 32], backgroundColor: '#a2d2df' }]
                 },
-                options: {
-                    indexAxis: 'y',
-                    scales: { x: { display: false }, y: { ticks: { font: { size: 8 } } } },
-                    plugins: {
-                        legend: { display: false },
-                        datalabels: { anchor: 'end', align: 'start', color: '#444', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' }
-                    }
-                }
+                options: { indexAxis: 'y', scales: { x: { display: false } }, plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'start', color: '#444', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } }
             });
 
-            // 3. Voto
             new Chart(document.getElementById('chartVoto'), {
                 type: 'pie',
                 data: {
                     labels: ['SÍ', 'NO'],
-                    datasets: [{
-                        data: [94.3, 5.7],
-                        backgroundColor: ['#3367d6', '#d93025']
-                    }]
+                    datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
                 },
-                options: {
-                    plugins: {
-                        legend: { position: 'bottom', labels: { font: { size: 9 } } },
-                        datalabels: commonOptions.plugins.datalabels
-                    }
-                }
+                options: { plugins: { legend: { position: 'bottom' }, datalabels: commonOptions.plugins.datalabels } }
             });
         }
     </script>
