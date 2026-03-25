@@ -4,80 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .contenedor-noticias-unac {
+        /* Contenedor con fondo gris oscuro mientras decides qué imagen poner */
+        .seccion-noticias {
             position: relative;
             width: 100%;
-            min-height: 550px;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            padding: 50px 20px;
+            gap: 20px;
+            padding: 40px;
             box-sizing: border-box;
-            
-            /* --- RUTA CORREGIDA: USANDO EL ARCHIVO .JPG --- */
-            /* No uses el código Base64. Usa el nombre de tu imagen aquí */
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                              url('486135019_1066064098880646_4598676692904469015_n.jpg');
-            /* ----------------------------------------------- */
-            
+            background-color: #444; /* Fondo sólido para que no falle */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .tarjeta-informativa {
-            background: #ffffff;
+        /* Las dos ventanas blancas */
+        .ventana-noticia {
+            background: rgba(255, 255, 255, 0.95);
             flex: 1;
-            max-width: 480px;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border-top: 6px solid #0056b3;
-            text-align: left;
         }
 
-        .tarjeta-informativa h2 {
+        .ventana-noticia h2 {
             color: #0056b3;
-            margin: 0 0 15px 0;
-            font-size: 1.6rem;
+            margin-top: 0;
+            font-size: 1.5rem;
         }
 
-        .tarjeta-informativa p {
+        .ventana-noticia p {
             color: #333;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
 
-        .btn-accion {
+        .boton-leer {
             display: inline-block;
-            padding: 12px 25px;
+            margin-top: 15px;
+            padding: 10px 20px;
             background-color: #0056b3;
-            color: #ffffff;
+            color: white;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 5px;
             font-weight: bold;
         }
 
-        @media (max-width: 800px) {
-            .contenedor-noticias-unac { flex-direction: column; }
+        /* Para que en celular se pongan una debajo de otra */
+        @media (max-width: 768px) {
+            .seccion-noticias {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
-    <section class="contenedor-noticias-unac">
-        <article class="tarjeta-informativa">
+    <section class="seccion-noticias">
+        <article class="ventana-noticia">
             <h2>Actualización del Padrón 2026-A</h2>
-            <p>Se informa que el plazo máximo para la inscripción y actualización de datos es el 29 de marzo. Asegura tu vacante para la ruta de Ventanilla a tiempo.</p>
-            <a href="#" class="btn-accion">Ver Registro</a>
+            <p>Se comunica a todos los estudiantes que el plazo máximo para la inscripción y actualización de datos es el 29 de marzo. Asegura tu vacante para la ruta de Ventanilla a tiempo.</p>
+            <a href="#" class="boton-leer">Ver Registro</a>
         </article>
 
-        <article class="tarjeta-informativa">
+        <article class="ventana-noticia">
             <h2>Nuevos Paraderos en Ventanilla</h2>
-            <p>Se han habilitado nuevos puntos estratégicos para mejorar la fluidez del servicio. Revisa el mapa actualizado aquí.</p>
-            <a href="#" class="btn-accion">Ver Mapa</a>
+            <p>A partir del 20 de marzo se han habilitado nuevos puntos estratégicos para mejorar la fluidez del servicio. Revisa el mapa actualizado para ubicar tu paradero más cercano.</p>
+            <a href="#" class="boton-leer">Ver Mapa</a>
         </article>
     </section>
 
