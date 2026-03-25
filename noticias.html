@@ -1,42 +1,144 @@
-<nav class="navbar">
-    <div class="logo-container">
-        <div class="logo-top">UNIVERSIDAD NACIONAL DEL CALLAO</div>
-        <div class="logo-bottom">MOVILIDAD UNIVERSITARIA</div>
-    </div>
-    <div class="menu">
-        <a href="index.html">Inicio</a>
-        <a href="horarios.html">Horarios</a>
-        <a href="rutas.html">Rutas</a>
-        <a href="noticias.html" class="active">Noticias</a>
-        <a href="consultas.html" class="btn-consultas">Consultas</a>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Movilidad UNAC</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.1.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Segoe UI', sans-serif;
+            min-height: 100vh;
+        }
 
-<style>
-    /* Asegúrate de tener estos estilos para que se vea como en tu imagen */
-    .navbar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 4%;
-        background: #000;
-        border-bottom: 1px solid #1a1a1a;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    .logo-container { text-align: left; line-height: 1.2; }
-    .logo-top { color: #fff; font-weight: bold; font-size: 0.85rem; }
-    .logo-bottom { color: #ffb400; font-weight: bold; font-size: 0.85rem; }
-    
-    .menu { display: flex; align-items: center; gap: 20px; }
-    .menu a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 0.8rem;
-        transition: 0.3s;
-    }
-    .menu a:hover, .menu a.active { color: #ffb400; }
-    .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
-</style>
+        /* NAVBAR IDENTICA A LA IMAGEN */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 4%;
+            background: #000;
+            border-bottom: 1px solid #1a1a1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-container { text-align: left; line-height: 1.2; }
+        .logo-top { color: #fff; font-weight: bold; font-size: 0.85rem; }
+        .logo-bottom { color: #ffb400; font-weight: bold; font-size: 0.85rem; }
+        
+        .menu { display: flex; align-items: center; gap: 20px; }
+        .menu a { color: #fff; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
+        .menu a:hover, .menu a.active { color: #ffb400; }
+        .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
+
+        /* CONTENIDO DE LA SECCIÓN */
+        .container { 
+            width: 100%; 
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 60px 20px; 
+            text-align: center; 
+        }
+
+        .report-header { color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+        .report-main-title { font-size: 3rem; margin-bottom: 20px; font-weight: 800; }
+        .report-subtitle { color: #aaa; font-size: 1.1rem; margin-bottom: 50px; line-height: 1.6; }
+
+        /* ESTILOS DEL REPORTE DE GESTIÓN */
+        .data-list { text-align: left; max-width: 850px; margin: 0 auto 40px; color: #ccc; line-height: 1.8; }
+        .data-item { margin-bottom: 15px; border-left: 3px solid #ffb400; padding-left: 15px; }
+
+        /* DASHBOARD DE GRÁFICAS */
+        .dashboard-container { 
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin-top: 50px; 
+        }
+        .chart-card { 
+            background: #fff; border-radius: 8px; padding: 20px; flex: 1 1 300px; 
+            max-width: 320px; color: #000;
+        }
+        .chart-card h3 { font-size: 12px; margin-bottom: 15px; color: #333; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body onload="renderCharts()">
+
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-top">UNIVERSIDAD NACIONAL DEL CALLAO</div>
+            <div class="logo-bottom">MOVILIDAD UNIVERSITARIA</div>
+        </div>
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="horarios.html">Horarios</a>
+            <a href="rutas.html">Rutas</a>
+            <a href="noticias.html" class="active">Noticias</a>
+            <a href="consultas.html" class="btn-consultas">Consultas</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <p class="report-header">Mantente informado</p>
+        <h1 class="report-main-title">Noticias y Avisos</h1>
+        <p class="report-subtitle">Entérate de las últimas novedades y comunicados oficiales de la Oficina de Movilidad Universitaria.</p>
+
+        <h3 style="margin-bottom: 30px; font-size: 1.5rem;">📢 REPORTE DE GESTIÓN: RESULTADOS 2026-A 🚌💨</h3>
+        
+        <div class="data-list">
+            <div class="data-item"><b>Respaldo Contundente:</b> Contamos con un <b>94.3% de aprobación</b> a la gestión actual. ✅</div>
+            <div class="data-item"><b>Demanda de Horarios:</b> El turno <b>Tarde-Noche (6:00 PM)</b> es el más solicitado. ⏳</div>
+            <div class="data-item"><b>Participación Total:</b> Estudiantes de todas las facultades ya están registrados. 🏛️</div>
+            
+            <p style="text-align: center; margin-top: 25px; font-weight: bold; color: #ffb400;">Atentamente, Delegado Sebastian – Movilidad Ventanilla</p>
+        </div>
+
+        <div class="dashboard-container">
+            <div class="chart-card"><h3>FACULTAD</h3><canvas id="chartFacultad"></canvas></div>
+            <div class="chart-card"><h3>HORARIOS</h3><canvas id="chartHorarios"></canvas></div>
+            <div class="chart-card"><h3>VOTO DE CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
+        </div>
+    </div>
+
+    <script>
+        // Lógica de las gráficas (mismo código que usamos antes para que no se pierdan los datos)
+        Chart.register(ChartDataLabels);
+        function renderCharts() {
+            const commonOptions = { plugins: { datalabels: { color: '#fff', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } };
+
+            new Chart(document.getElementById('chartFacultad'), {
+                type: 'pie',
+                data: {
+                    labels: ['FCE', 'FCC', 'FCA', 'FIEE', 'FIQ', 'FIARN', 'Otros'],
+                    datasets: [{
+                        data: [16.8, 11.3, 11.3, 11.3, 9.8, 7.5, 32],
+                        backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a']
+                    }]
+                },
+                options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 8 } } }, datalabels: commonOptions.plugins.datalabels } }
+            });
+
+            new Chart(document.getElementById('chartHorarios'), {
+                type: 'bar',
+                data: {
+                    labels: ['6:00 PM', '5:15 AM', '2:30 PM', '10:15 PM'],
+                    datasets: [{ data: [74.3, 68.3, 46.3, 32], backgroundColor: '#a2d2df' }]
+                },
+                options: { indexAxis: 'y', scales: { x: { display: false } }, plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'start', color: '#444', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } }
+            });
+
+            new Chart(document.getElementById('chartVoto'), {
+                type: 'pie',
+                data: {
+                    labels: ['SÍ', 'NO'],
+                    datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
+                },
+                options: { plugins: { legend: { position: 'bottom' }, datalabels: commonOptions.plugins.datalabels } }
+            });
+        }
+    </script>
+</body>
+</html>
