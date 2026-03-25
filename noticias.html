@@ -1,43 +1,70 @@
-<div class="tarjeta-informativa" style="grid-column: span 1; max-width: 100%;">
-    <div>
-        <span style="color: #ffb400; font-weight: bold; font-size: 0.8rem;">25 MARZO, 2026</span>
-        <h2>REPORTE DE GESTIÓN: RUMBO AL CICLO 2026-A 🚌💨</h2>
-        
-        <p>¡Hola, comunidad de la Ruta Ventanilla! ✋😊 Tal como lo prometimos, compartimos los resultados que respaldan nuestras gestiones ante las autoridades para este inicio de clases el 1 de abril. 🎓📊</p>
-        
-        <div id="reporte-detallado" style="display: none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-            <div style="color: #333; font-size: 0.9rem; text-align: left;">
-                <p><strong>📊 Lo que dicen nuestros datos:</strong></p>
-                <ul style="margin-left: 20px; margin-bottom: 20px;">
-                    <li><strong>Respaldo Contundente:</strong> ¡Gracias por la confianza! Contamos con un <strong>94.3% de aprobación</strong> a la gestión actual. ✅🤝</li>
-                    <li><strong>Demanda de Horarios:</strong> El turno Tarde-Noche (6:00 PM) y el de la Mañana (5:15 AM) son los más críticos. ⏳🚆</li>
-                    <li><strong>Participación Total:</strong> Estudiantes de todas las facultades, liderados por <strong>FCE, FCC y FCA</strong>, ya están registrados. 🏛️👥</li>
+<div class="contenedor-noticias-unac">
+    
+    <div class="tarjeta-informativa">
+        <div>
+            <span style="color: #ffb400; font-weight: bold; font-size: 0.7rem;">25 MARZO, 2026</span>
+            <h2>REPORTE DE GESTIÓN: RESULTADOS 2026-A 🚌</h2>
+            <p>¡Hola, comunidad! Compartimos los resultados del formulario de Actualización de Datos que respaldan nuestras gestiones para el inicio de clases este 1 de abril.</p>
+            
+            <div id="reporte-detallado" style="display: none; margin-top: 15px; font-size: 0.85rem; color: #333; text-align: left; border-top: 1px solid #eee; padding-top: 15px;">
+                <p><strong>📊 Resumen de Datos:</strong></p>
+                <ul style="margin-left: 15px;">
+                    <li><strong>Aprobación:</strong> 94.3% de respaldo a la gestión actual.</li>
+                    <li><strong>Horarios Críticos:</strong> 6:00 PM y 5:15 AM.</li>
+                    <li><strong>Registro:</strong> Es VITAL para garantizar tu cupo y seguridad.</li>
                 </ul>
-                
-                <p style="background: #fff3cd; padding: 10px; border-radius: 5px; font-size: 0.85rem;">
-                    ⚠️ <strong>RECORDATORIO FINAL:</strong> El padrón oficial ha sido actualizado. Este registro es VITAL para garantizar tu cupo. El verano se acaba, pero nuestro compromiso está más fuerte que nunca. ☀️💙
-                </p>
-                <p style="font-style: italic; margin-top: 10px;">Atentamente, <strong>Delegado Sebastian</strong></p>
 
-                <div class="dashboard-container" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px;">
-                    <div style="flex: 1 1 250px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
-                        <h3 style="font-size: 11px; text-align: center;">FACULTAD</h3>
-                        <canvas id="chartFacultad"></canvas>
-                    </div>
-                    <div style="flex: 1 1 250px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
-                        <h3 style="font-size: 11px; text-align: center;">HORARIOS</h3>
-                        <canvas id="chartHorarios"></canvas>
-                    </div>
-                    <div style="flex: 1 1 250px; border: 1px solid #eee; padding: 10px; border-radius: 8px;">
-                        <h3 style="font-size: 11px; text-align: center;">VOTO DE CONFIANZA</h3>
-                        <canvas id="chartVoto"></canvas>
-                    </div>
+                <div style="margin-top: 15px;">
+                    <canvas id="chartFacultad" style="margin-bottom: 10px;"></canvas>
+                    <canvas id="chartHorarios" style="margin-bottom: 10px;"></canvas>
+                    <canvas id="chartVoto"></canvas>
                 </div>
+                <p style="font-size: 0.75rem; margin-top: 10px; font-style: italic;">Atentamente, Delegado Sebastian</p>
             </div>
         </div>
+        <button onclick="toggleReporte()" id="btn-reporte" class="btn-azul" style="border: none; cursor: pointer;">Ver Resultados</button>
     </div>
-    
-    <button onclick="toggleReporte()" id="btn-reporte" class="btn-azul" style="border: none; cursor: pointer; margin-top: 15px;">Ver Resultados y Gráficos</button>
+
+    <div class="tarjeta-informativa">
+        <div>
+            <h2>Nuevos Paraderos en Ventanilla</h2>
+            <p>A partir del 20 de marzo se han habilitado nuevos puntos estratégicos para mejorar la fluidez del servicio. Revisa el mapa actualizado aquí.</p>
+        </div>
+        <a href="URL_AQUÍ" class="btn-azul">Ver Mapa</a>
+    </div>
+
+    <div class="tarjeta-informativa">
+        <div>
+            <h2>Horarios de Verano 2026</h2>
+            <p>Consulta los horarios ajustados para el periodo de verano. Las unidades saldrán en intervalos de 15 minutos desde el paradero inicial.</p>
+        </div>
+        <a href="URL_AQUÍ" class="btn-azul">Ver Horarios</a>
+    </div>
+
+    <div class="tarjeta-informativa">
+        <div>
+            <h2>Carnet Universitario Vigente</h2>
+            <p>Recuerda que para hacer uso del servicio es indispensable presentar tu carnet universitario original o constancia de matrícula actualizada.</p>
+        </div>
+        <a href="URL_AQUÍ" class="btn-azul">Más Información</a>
+    </div>
+
+    <div class="tarjeta-informativa">
+        <div>
+            <h2>Protocolos de Seguridad</h2>
+            <p>Conoce las normas de convivencia y seguridad dentro de las unidades de transporte para garantizar un viaje cómodo para todos.</p>
+        </div>
+        <a href="URL_AQUÍ" class="btn-azul">Leer Protocolo</a>
+    </div>
+
+    <div class="tarjeta-informativa">
+        <div>
+            <h2>Canales de Atención</h2>
+            <p>¿Tienes dudas o sugerencias? Comunícate directamente con los delegados de ruta a través de nuestros nuevos canales digitales oficiales.</p>
+        </div>
+        <a href="URL_AQUÍ" class="btn-azul">Contactar</a>
+    </div>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
@@ -47,22 +74,19 @@
 function toggleReporte() {
     var reporte = document.getElementById("reporte-detallado");
     var btn = document.getElementById("btn-reporte");
-    
     if (reporte.style.display === "none") {
         reporte.style.display = "block";
-        btn.innerText = "Cerrar Reporte";
-        inicializarGraficos(); // Carga los gráficos solo cuando se abre
+        btn.innerText = "Cerrar";
+        inicializarGraficos();
     } else {
         reporte.style.display = "none";
-        btn.innerText = "Ver Resultados y Gráficos";
+        btn.innerText = "Ver Resultados";
     }
 }
 
 function inicializarGraficos() {
     Chart.register(ChartDataLabels);
-    const commonOptions = { plugins: { datalabels: { color: '#fff', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' } } };
-
-    // Gráfico Facultad
+    // Configuración de Gráfico Facultad
     new Chart(document.getElementById('chartFacultad'), {
         type: 'pie',
         data: {
@@ -72,7 +96,7 @@ function inicializarGraficos() {
                 backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a']
             }]
         },
-        options: { plugins: { legend: { display: false }, datalabels: commonOptions.plugins.datalabels } }
+        options: { plugins: { legend: { display: false }, datalabels: { color: '#fff', formatter: (v) => v + '%' } } }
     });
 
     // Gráfico Horarios
@@ -80,25 +104,19 @@ function inicializarGraficos() {
         type: 'bar',
         data: {
             labels: ['6:00 PM', '5:15 AM', '2:30 PM', '10:15 PM'],
-            datasets: [{
-                data: [74.3, 68.3, 46.3, 32],
-                backgroundColor: '#a2d2df'
-            }]
+            datasets: [{ data: [74.3, 68.3, 46.3, 32], backgroundColor: '#a2d2df' }]
         },
-        options: { indexAxis: 'y', plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'start', color: '#444', formatter: (v) => v + '%' } } }
+        options: { indexAxis: 'y', plugins: { legend: { display: false } } }
     });
 
-    // Gráfico Voto (94.3%)
+    // Gráfico Voto
     new Chart(document.getElementById('chartVoto'), {
         type: 'pie',
         data: {
             labels: ['SÍ', 'NO'],
-            datasets: [{
-                data: [94.3, 5.7],
-                backgroundColor: ['#3367d6', '#d93025']
-            }]
+            datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
         },
-        options: { plugins: { legend: { position: 'bottom' }, datalabels: commonOptions.plugins.datalabels } }
+        options: { plugins: { legend: { position: 'bottom' } } }
     });
 }
 </script>
