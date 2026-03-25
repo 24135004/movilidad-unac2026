@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horarios Ruta Ventanilla - UNAC</title>
     <style>
+        /* --- RESET Y CENTRADO --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             background-color: #000; 
@@ -16,7 +17,7 @@
             min-height: 100vh;
         }
 
-        /* NAVBAR FIJA */
+        /* --- NAVBAR --- */
         .navbar {
             width: 100%;
             display: flex;
@@ -35,7 +36,7 @@
         .menu a { color: #fff; text-decoration: none; font-size: 0.85rem; }
         .menu a.active { color: #ffb400; font-weight: bold; }
 
-        /* CONTENEDOR PRINCIPAL CENTRADO */
+        /* --- CONTENEDOR HERO --- */
         .hero {
             width: 100%;
             max-width: 1100px;
@@ -46,10 +47,9 @@
             text-align: center;
         }
 
-        h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; margin-bottom: 10px; }
-        .subtitle { color: #888; margin-bottom: 35px; max-width: 700px; }
+        h1 { font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 800; margin-bottom: 30px; }
 
-        /* EL CUADRO NEGRO ANCHO (IMAGEN 2) */
+        /* --- CUADRO NEGRO ANCHO --- */
         .table-container {
             background: #0a0a0a;
             border: 1px solid #222;
@@ -60,19 +60,19 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.7);
         }
 
-        /* TÍTULO AMARILLO DENTRO DEL CUADRO */
-        .internal-title {
-            color: #ffb400;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+        /* TÍTULO AMARILLO INTERNO */
+        .internal-header {
             text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .internal-header h2 {
+            color: #ffb400;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* BOTONES SWITCH */
+        /* SWITCH IDA/VUELTA */
         .switch-container {
             display: flex;
             background: #1a1a1a;
@@ -86,12 +86,16 @@
         .going .btn-going, .return .btn-return { background: #ffb400; color: #000; }
         .going .btn-return, .return .btn-going { color: #666; }
 
-        /* TABLAS COMPLETAS */
+        /* TABLAS CON TODAS LAS COLUMNAS */
         .schedule-table { display: none; width: 100%; border-collapse: collapse; }
         .active-table { display: table; }
         th { color: #888; text-align: left; padding: 15px; border-bottom: 1px solid #222; font-size: 0.75rem; text-transform: uppercase; }
-        td { padding: 15px; border-bottom: 1px solid #111; font-size: 0.9rem; text-align: left; }
+        td { padding: 18px 15px; border-bottom: 1px solid #111; font-size: 0.9rem; text-align: left; }
+        
         .time { font-weight: bold; color: #fff; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+        .badge-regular { background: rgba(0, 255, 150, 0.1); color: #00ff96; }
+        .badge-comunicado { background: rgba(255, 180, 0, 0.1); color: #ffb400; }
 
         /* FOOTER STATS */
         .stats {
@@ -107,16 +111,14 @@
         .item strong { display: block; color: #ffb400; font-size: 1.1rem; }
         .item p { font-size: 0.75rem; color: #666; margin-top: 5px; text-transform: uppercase; }
 
-        /* RESPONSIVE MÓVIL */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .navbar { padding: 15px 3%; }
-            .logo { font-size: 0.65rem; }
             .menu { gap: 10px; }
-            .menu a { font-size: 0.7rem; }
-            h1 { font-size: 1.8rem; }
-            .table-container { padding: 15px; }
+            .menu a { font-size: 0.75rem; }
+            .table-container { padding: 15px; overflow-x: auto; }
+            .schedule-table { min-width: 600px; } /* Permite scroll lateral en móvil */
             .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-            .schedule-table { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -135,7 +137,6 @@
     <section class="hero">
         <p style="color: #ffb400; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">PLANIFICA TU VIAJE</p>
         <h1>Horarios de la Ruta Ventanilla</h1>
-        <p class="subtitle">Consulta la programación oficial de ida y vuelta para el ciclo 2026-A.</p>
 
         <div class="switch-container going" id="mainSwitch">
             <div class="switch-btn btn-going">Ventanilla → UNAC</div>
@@ -143,23 +144,51 @@
         </div>
 
         <div class="table-container">
-            <div class="internal-title" id="tableTitle">
-                <span>📅</span> Servicio: Ventanilla → Campus UNAC
+            <div class="internal-header">
+                <h2 id="tableTitle">Horario: IDA</h2>
             </div>
 
             <table class="schedule-table active-table" id="tableGoing">
-                <thead><tr><th>Hora</th><th>Punto de Partida</th><th>Destino</th><th>Días</th></tr></thead>
+                <thead>
+                    <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
+                </thead>
                 <tbody>
-                    <tr><td class="time">05:15 AM</td><td>Sede UNAC (Ventanilla)</td><td>Campus Bellavista</td><td>L-V</td></tr>
+                    <tr>
+                        <td class="time">05:15 AM</td>
+                        <td>Sede UNAC (Ventanilla)</td>
+                        <td>Campus Bellavista</td>
+                        <td>Lunes a Viernes</td>
+                        <td><span class="badge badge-regular">Regular</span></td>
+                    </tr>
                 </tbody>
             </table>
 
             <table class="schedule-table" id="tableReturn">
-                <thead><tr><th>Hora</th><th>Punto de Partida</th><th>Punto de Llegada</th><th>Días</th></tr></thead>
+                <thead>
+                    <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
+                </thead>
                 <tbody>
-                    <tr><td class="time">02:30 PM</td><td>Campus Bellavista</td><td>INKA COLA</td><td>L-V</td></tr>
-                    <tr><td class="time">06:00 PM</td><td>Campus Bellavista</td><td>Sede UNAC (Ventanilla)</td><td>L-V</td></tr>
-                    <tr><td class="time">10:15 PM</td><td>Campus Bellavista</td><td>TELÉFONO</td><td>L-V</td></tr>
+                    <tr>
+                        <td class="time">02:30 PM</td>
+                        <td>Campus Bellavista</td>
+                        <td>INKA COLA</td>
+                        <td>Lunes a Viernes</td>
+                        <td><span class="badge badge-comunicado">Comunicado</span></td>
+                    </tr>
+                    <tr>
+                        <td class="time">06:00 PM</td>
+                        <td>Campus Bellavista</td>
+                        <td>Sede UNAC (Ventanilla)</td>
+                        <td>Lunes a Viernes</td>
+                        <td><span class="badge badge-regular">Regular</span></td>
+                    </tr>
+                    <tr>
+                        <td class="time">10:15 PM</td>
+                        <td>Campus Bellavista</td>
+                        <td>TELÉFONO</td>
+                        <td>Lunes a Viernes</td>
+                        <td><span class="badge badge-comunicado">Comunicado</span></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -183,12 +212,12 @@
                 sw.classList.replace('going', 'return');
                 t1.classList.remove('active-table');
                 t2.classList.add('active-table');
-                title.innerHTML = '<span>📅</span> Servicio: Campus UNAC → Ventanilla';
+                title.innerText = 'Horario: VUELTA';
             } else {
                 sw.classList.replace('return', 'going');
                 t2.classList.remove('active-table');
                 t1.classList.add('active-table');
-                title.innerHTML = '<span>📅</span> Servicio: Ventanilla → Campus UNAC';
+                title.innerText = 'Horario: IDA';
             }
         });
     </script>
