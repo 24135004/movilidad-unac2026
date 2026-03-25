@@ -1,29 +1,134 @@
-/* Ajustes para fondo claro sin romper tu estilo base */
-.bg-light { background-color: #f8fafc; color: #0f172a; }
-.dark-nav { background-color: #030712; color: white; }
+/* Configuración General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-.container-schedule { padding: 60px 8%; text-align: center; max-width: 1200px; margin: 0 auto; }
-.top-tag { color: #ffb400; font-weight: bold; font-size: 12px; letter-spacing: 1px; margin-bottom: 10px; }
-.main-title { font-family: 'Archivo Black', sans-serif; font-size: 42px; margin-bottom: 20px; color: #0f172a; }
-.main-desc { color: #64748b; max-width: 700px; margin: 0 auto 40px; }
+body, html {
+    height: 100%;
+    color: white;
+}
 
-/* Selector de botones central */
-.route-switch { display: inline-flex; border: 1px solid #e2e8f0; border-radius: 50px; padding: 5px; background: white; margin-bottom: 40px; }
-.switch-btn { border: none; padding: 12px 25px; border-radius: 40px; cursor: pointer; font-weight: bold; color: #64748b; background: transparent; transition: 0.3s; }
-.switch-btn.active { background: #030712; color: white; }
+/* Contenedor Principal con Imagen de Fondo */
+.main-container {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('tu-imagen-de-fondo.jpg'); /* Reemplaza con tu archivo */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 8%;
+}
 
-/* Tabla estilo Card */
-.table-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e2e8f0; margin-bottom: 30px; }
-.card-header { background: #030712; color: white; padding: 15px 25px; text-align: left; font-weight: bold; }
-.table-responsive { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; text-align: left; }
-th { padding: 15px 25px; background: #f8fafc; color: #94a3b8; font-size: 11px; border-bottom: 1px solid #e2e8f0; }
-td { padding: 18px 25px; border-bottom: 1px solid #f1f5f9; color: #334155; font-size: 14px; }
-.time-cell { font-weight: 900; color: #0f172a; }
+/* Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
 
-/* Badges de estado */
-.badge-reg { background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 20px; font-size: 12px; }
-.badge-warn { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-size: 12px; }
+.logo {
+    font-weight: bold;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
 
-.info-alert { background: #fffbeb; border: 1px solid #fef3c7; color: #92400e; padding: 20px; border-radius: 10px; text-align: left; font-size: 14px; line-height: 1.5; }
-.section-title { margin-top: 50px; font-family: 'Archivo Black', sans-serif; font-size: 28px; }
+.logo span {
+    color: #ffb400;
+    font-size: 0.8rem;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.menu a.active {
+    background-color: #ffb400;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: black;
+}
+
+/* Sección Hero (Centro) */
+.hero {
+    max-width: 600px;
+}
+
+.badge {
+    background: rgba(255, 180, 0, 0.2);
+    border: 1px solid #ffb400;
+    color: #ffb400;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.yellow {
+    color: #ffb400;
+}
+
+.ruta-txt {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.desc {
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Botones */
+.btns {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-fill {
+    background: #ffb400;
+    color: black;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-line {
+    border: 1px solid white;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+/* Footer de Estadísticas */
+.stats {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    border-radius: 15px 15px 0 0;
+}
+
+.item {
