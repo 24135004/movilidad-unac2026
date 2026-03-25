@@ -3,294 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios Responsivos - Movilidad UNAC</title>
+    <title>Horarios de la Ruta Ventanilla - UNAC</title>
     <link rel="stylesheet" href="style.css">
-    
     <style>
-        /* --- ESTILOS MAESTROS (Corregidos) --- */
-        
-        /* Aseguramos que el main-container ocupe toda la pantalla de la laptop y no tenga scrolls raros */
+        /* --- RESET Y BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #000; color: #fff; font-family: 'Segoe UI', sans-serif; }
+
         .main-container {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100vh;
-            overflow: hidden; /* En laptop el scroll lo maneja el hero */
+            min-height: 100vh;
         }
 
-        /* Hero central: Lo hacemos escaneable con scroll interno si el contenido es mucho */
+        /* --- HERO SECTION --- */
         .hero {
-            flex-grow: 1;
+            flex: 1;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Alinea arriba */
-            padding: 40px 10%;
-            overflow-y: auto; /* Permite scroll interno si la tabla es grande */
+            text-align: center;
+        }
+
+        .super-title { color: #ffb400; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; font-size: 0.9rem; }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 800; }
+
+        .subtitle { color: #aaa; max-width: 700px; margin-bottom: 40px; line-height: 1.6; }
+
+        /* --- CONTENEDORES DINÁMICOS (Cuadro Negro) --- */
+        /* Eliminamos anchos fijos pequeños para que ocupe más espacio en laptop */
+        .info-panel, .table-wrap {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 15px;
             width: 100%;
-        }
-
-        /* --- Títulos (Responsivos) --- */
-        .super-title {
-            color: #ffb400;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        h1 {
-            font-size: 3.5rem; /* Tamaño grande para laptop */
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-align: center;
-            transition: font-size 0.3s ease; /* Transición suave para celular */
-        }
-
-        .subtitle {
-            color: #aaa;
-            max-width: 600px;
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        /* --- Panel de Info (Expandido en Laptop) --- */
-        .info-panel {
-            background: rgba(255, 255, 255, 0.04); /* Más sutil */
-            border: 1px solid rgba(255, 180, 0, 0.15);
-            border-radius: 12px;
+            max-width: 1100px; /* Aquí se agranda en laptop */
             padding: 25px;
-            max-width: 950px; /* Expandimos el cuadro negro en laptop */
-            width: 100%;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            color: #eee;
-            line-height: 1.6;
-            box-sizing: border-box;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .panel-header {
-            font-weight: bold;
-            color: white;
-            margin-bottom: 12px;
-        }
+        .info-panel { text-align: left; font-size: 0.95rem; line-height: 1.7; color: #ccc; }
 
-        /* --- Switch y Tabla --- */
+        /* --- SWITCH DE BOTONES --- */
         .switch-container {
-            background: #222;
-            border-radius: 30px;
             display: flex;
+            background: #1a1a1a;
+            border-radius: 50px;
             padding: 5px;
             margin-bottom: 30px;
             position: relative;
-            cursor: pointer;
             width: fit-content;
         }
-        /* ... (resto del CSS del switch sin cambios) ... */
 
-        .table-wrap {
-            width: 100%;
-            max-width: 950px; /* Expandimos el cuadro negro en laptop */
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 20px;
+        .switch-btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            z-index: 2;
         }
-        /* ... (resto del CSS de la tabla sin cambios) ... */
 
+        /* Lógica visual del botón activo */
+        .switch-container.going .btn-going,
+        .switch-container.return .btn-return { color: #000; background: #ffb400; }
+        .switch-container.going .btn-return,
+        .switch-container.return .btn-going { color: #888; }
 
-        /* --- Footer Stats (Responsivo) --- */
+        /* --- TABLA RESPONSIVA --- */
+        .table-wrap { overflow-x: auto; padding: 0; } /* Padding 0 para que la tabla llegue al borde en móvil */
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        
+        th { background: #151515; color: #888; text-transform: uppercase; font-size: 0.75rem; padding: 15px; text-align: left; }
+        
+        td { padding: 15px; border-bottom: 1px solid #222; font-size: 0.95rem; }
+
+        .time { font-weight: bold; color: #fff; }
+        .type-badge { padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+        .type-regular { background: rgba(0, 255, 150, 0.1); color: #00ff96; }
+
+        .active-table { display: block; }
+        .schedule-table { display: none; }
+        .schedule-table.active-table { display: table; }
+
+        /* --- FOOTER STATS --- */
         .stats {
-            background: rgba(15, 15, 15, 0.9);
-            backdrop-filter: blur(10px);
+            background: #0a0a0a;
             display: flex;
-            justify-content: space-around;
-            padding: 25px 0;
-            border-radius: 12px 12px 0 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            width: 100%;
+            flex-wrap: wrap; /* Para que bajen en celular */
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            border-top: 1px solid #222;
         }
 
-        .item {
-            text-align: center;
-        }
-        /* ... (resto del CSS de stats sin cambios) ... */
+        .stat-item { text-align: center; }
+        .stat-item strong { display: block; color: #ffb400; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 5px; }
+        .stat-item p { color: #fff; font-weight: 500; }
 
-
-        /* =========================================================
-           ================ MEDIOS QUERIES (RESPONSIVE) ===============
-           ========================================================= */
-
-        /* 1. Ajustes para Tablets y Celulares Grandes (menor a 992px) */
-        @media (max-width: 992px) {
-            h1 { font-size: 2.8rem; }
-        }
-
-        /* 2. Ajustes CRÍTICOS para Celulares (menor a 768px) */
+        /* --- AJUSTES CELULAR --- */
         @media (max-width: 768px) {
-            
-            /* Contenedor: Permitimos scroll en todo el body en celular */
-            .main-container {
-                height: auto;
-                min-height: 100vh;
-                overflow: visible;
-                padding: 0 5%; /* Márgenes laterales para celular */
-            }
-
-            .hero {
-                padding: 30px 0;
-                overflow: visible;
-            }
-
-            /* Título: Se reduce drásticamente para celular */
-            h1 {
-                font-size: 2rem; /* Tamaño adecuado para móvil */
-                line-height: 1.2;
-            }
-
-            .subtitle {
-                font-size: 0.85rem;
-                margin-bottom: 30px;
-            }
-
-            /* Panel Info y Tabla: Ancho completo */
-            .info-panel, .table-wrap {
-                max-width: 100%;
-                padding: 15px;
-                font-size: 0.85rem;
-            }
-
-            /* Switch: Reducimos padding */
-            .switch-btn {
-                padding: 8px 15px;
-                font-size: 0.7rem;
-            }
-
-            /* Tabla: Scroll lateral para que no se amontone */
-            .table-wrap {
-                overflow-x: auto;
-            }
-            
-            th, td {
-                font-size: 0.75rem;
-                padding: 8px;
-                min-width: 80px; /* Asegura que las columnas tengan ancho mínimo */
-            }
-
-            /* --- FOOTER STATS (Solución al descuadre) --- */
-            .stats {
-                flex-direction: column; /* Apilamos los elementos uno debajo del otro */
-                gap: 20px; /* Espacio entre items */
-                padding: 25px;
-                border-radius: 12px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-
-            .item {
-                text-align: left; /* Alineamos a la izquierda en celular */
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                padding-bottom: 15px;
-            }
-
-            .item:last-child {
-                border-bottom: none;
-                padding-bottom: 0;
-            }
+            h1 { font-size: 1.8rem; }
+            .hero { padding: 20px 15px; }
+            .info-panel { padding: 15px; font-size: 0.85rem; }
+            .stats { gap: 20px; justify-content: space-between; }
+            .stat-item { flex: 1 1 40%; text-align: left; }
         }
     </style>
 </head>
 <body>
-    <div class="main-container home">
-        <nav class="navbar">
-            <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
-            <div class="menu">
-                <a href="index.html">Inicio</a>
-                <a href="horarios.html" class="active">Horarios</a>
-                <a href="rutas.html">Rutas</a>
-                <a href="noticias.html">Noticias</a>
-                <a href="consultas.html">Consultas</a>
-            </div>
-        </nav>
 
+    <div class="main-container">
         <section class="hero">
             <p class="super-title">Planifica tu viaje</p>
             <h1>Horarios de la Ruta Ventanilla</h1>
-            <p class="subtitle">Consulta los horarios actualizados del servicio de transporte universitario para el semestre 2026-A. Los horarios pueden variar en días festivos.</p>
+            <p class="subtitle">Consulta los horarios actualizados del servicio de transporte universitario para el semestre 2026-A.</p>
 
             <div class="info-panel">
-                <p class="panel-header">🚍 Servicio de Movilidad Universitaria: Ruta Ventanilla 📍</p>
-                <p>Comprometidos con tu puntualidad académica, presentamos la programación vigente para este semestre. Los horarios están sujetos a cambios excepcionales por disposición institucional o semanas de evaluación, los cuales serán notificados oportunamente por este medio. 🏫✨</p>
+                <strong>🚍 Servicio de Movilidad Universitaria: Ruta Ventanilla 📍</strong><br><br>
+                Comprometidos con tu puntualidad académica, presentamos la programación vigente para este semestre. Los horarios pueden variar en días festivos o semanas de evaluación.
             </div>
 
-            <div class="switch-container going" id="scheduleSwitch">
-                <span class="switch-toggle"></span>
-                <span class="switch-btn switch-btn-going">Ventanilla → UNAC</span>
-                <span class="switch-btn switch-btn-return">UNAC → Ventanilla</span>
+            <div class="switch-container going" id="toggleSchedule">
+                <div class="switch-btn btn-going">Ventanilla → UNAC</div>
+                <div class="switch-btn btn-return">UNAC → Ventanilla</div>
             </div>
 
             <div class="table-wrap">
-                <div class="schedule-table active-table" id="goingTable">
-                    <div class="table-title">Servicio: Ventanilla → Campus UNAC</div>
-                    <table>
-                        <thead>
-                            <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="time">05:15 AM</td><td>Sede UNAC</td><td>Campus Bellavista</td><td>L-V</td><td><span class="type-badge type-regular">Regular</span></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="schedule-table" id="returnTable">
-                    <div class="table-title">Servicio: Campus UNAC → Ventanilla</div>
-                    <table>
-                        <thead>
-                            <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="time">06:00 PM</td><td>Campus Bellavista</td><td>Sede UNAC</td><td>L-V</td><td><span class="type-badge type-regular">Regular</span></td></tr>
-                            <tr><td class="time">02:30 PM</td><td>Campus Bellavista</td><td>INKA COLA</td><td>L-V</td><td><span class="type-badge type-previo">Previo</span></td></tr>
-                            <tr><td class="time">10:15 PM</td><td>Campus Bellavista</td><td>TELEFONO</td><td>L-V</td><td><span class="type-badge type-previo">Previo</span></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-notice">
-                    <span>⚠️</span> Nota: Los horarios pueden variar en exámenes o feriados.
-                </div>
+                <table class="schedule-table active-table" id="tableGoing">
+                    <thead>
+                        <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="time">05:15 AM</td><td>Sede UNAC</td><td>Campus Bellavista</td><td>L-V</td><td><span class="type-badge type-regular">Regular</span></td></tr>
+                    </tbody>
+                </table>
+
+                <table class="schedule-table" id="tableReturn">
+                    <thead>
+                        <tr><th>Hora</th><th>Partida</th><th>Destino</th><th>Días</th><th>Tipo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="time">06:00 PM</td><td>Campus Bellavista</td><td>Sede UNAC</td><td>L-V</td><td><span class="type-badge type-regular">Regular</span></td></tr>
+                        <tr><td class="time">02:30 PM</td><td>Campus Bellavista</td><td>INKA COLA</td><td>L-V</td><td><span class="type-badge type-regular">Previo</span></td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
         <footer class="stats">
-            <div class="item"><strong>Frecuencia</strong><p>Lunes a Viernes</p></div>
-            <div class="item"><strong>Estado</strong><p>En Servicio</p></div>
-            <div class="item"><strong>Capacidad</strong><p>40 Cupos</p></div>
-            <div class="item"><strong>Ruta</strong><p>Directa</p></div>
+            <div class="stat-item"><strong>Frecuencia</strong><p>LUNES A VIERNES</p></div>
+            <div class="stat-item"><strong>Estado</strong><p>EN SERVICIO</p></div>
+            <div class="stat-item"><strong>Capacidad</strong><p>40 CUPOS</p></div>
+            <div class="stat-item"><strong>Ruta</strong><p>DIRECTA</p></div>
         </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const switchContainer = document.getElementById('scheduleSwitch');
-            const goingTable = document.getElementById('goingTable');
-            const returnTable = document.getElementById('returnTable');
+        const btnToggle = document.getElementById('toggleSchedule');
+        const tableGoing = document.getElementById('tableGoing');
+        const tableReturn = document.getElementById('tableReturn');
 
-            switchContainer.addEventListener('click', function() {
-                if (this.classList.contains('going')) {
-                    this.classList.remove('going');
-                    this.classList.add('return');
-                    goingTable.classList.remove('active-table');
-                    returnTable.classList.add('active-table');
-                } else {
-                    this.classList.remove('return');
-                    this.classList.add('going');
-                    returnTable.classList.remove('active-table');
-                    goingTable.classList.add('active-table');
-                }
-            });
+        btnToggle.addEventListener('click', () => {
+            if (btnToggle.classList.contains('going')) {
+                btnToggle.classList.replace('going', 'return');
+                tableGoing.classList.remove('active-table');
+                tableReturn.classList.add('active-table');
+            } else {
+                btnToggle.classList.replace('return', 'going');
+                tableReturn.classList.remove('active-table');
+                tableGoing.classList.add('active-table');
+            }
         });
     </script>
 </body>
