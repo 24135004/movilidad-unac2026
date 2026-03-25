@@ -1,44 +1,40 @@
-<div class="contenedor-noticias-unac">
-
-    <div class="tarjeta-informativa" style="max-width: 800px; margin: 0 auto;">
-        <div>
-            <span style="color: #ffb400; font-weight: bold; font-size: 0.75rem;">25 MARZO, 2026</span>
-            <h2 style="margin-top: 10px; font-size: 1.5rem;">📢 REPORTE DE GESTIÓN: RESULTADOS RUMBO AL CICLO 2026-A 🚌💨</h2>
+<div class="tarjeta-informativa" style="max-width: 850px;">
+    <div>
+        <span style="color: #ffb400; font-weight: bold; font-size: 0.75rem;">25 MARZO, 2026</span>
+        <h2 style="margin-top: 10px;">📢 REPORTE DE GESTIÓN: RESULTADOS RUMBO AL CICLO 2026-A 🚌💨</h2>
+        
+        <div style="text-align: left; font-size: 0.88rem; line-height: 1.5; color: #333; margin-top: 15px;">
+            <p>¡Hola, comunidad de la Ruta Ventanilla! 👋 😊 Tal como lo prometimos, la transparencia es la base de nuestra organización. Tras el cierre del formulario de <b>Actualización Obligatoria de Datos</b>, compartimos con ustedes los resultados que respaldan nuestras próximas gestiones ante las autoridades para este inicio de clases el <b>1 de abril</b>. 📍 📊</p>
             
-            <div style="text-align: left; font-size: 0.9rem; line-height: 1.5; color: #333; margin-top: 15px;">
-                <p>¡Hola, comunidad de la Ruta Ventanilla! 👋 😊 Tal como lo prometimos, la transparencia es la base de nuestra organización. Tras el cierre del formulario de <b>Actualización Obligatoria de Datos</b>, compartimos con ustedes los resultados que respaldan nuestras próximas gestiones ante las autoridades para este inicio de clases el <b>1 de abril</b>. 📍 📊</p>
-                
-                <p>📊 <b>Lo que dicen nuestros datos:</b></p>
-                <ul style="list-style: none; padding-left: 0;">
-                    <li>▪️ <b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un <b>94.3% de aprobación</b> a la gestión actual. Este voto de confianza nos motiva a seguir luchando por un servicio de calidad. ✅ 🤝</li>
-                    <li>▪️ <b>Demanda de Horarios:</b> Hemos identificado que el turno <b>Tarde-Noche (6:00 PM)</b> y el de la <b>Mañana (5:15 AM)</b> son los más críticos. Usaremos estos números para exigir que las unidades cubran la capacidad necesaria y nadie se quede fuera. ⏳ 🚍</li>
-                    <li>▪️ <b>Participación Total:</b> Estudiantes de todas las facultades, liderados por <b>FCE, FCC y FCA</b>, ya están registrados. ¡Somos una sola comunidad universitaria! 🏛️ 👥</li>
-                </ul>
+            <p>📊 <b>Lo que dicen nuestros datos:</b></p>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>▪️ <b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un <b>94.3% de aprobación</b> a la gestión actual. Este voto de confianza nos motiva a seguir luchando por un servicio de calidad. ✅ 🤝</li>
+                <li>▪️ <b>Demanda de Horarios:</b> Hemos identificado que el turno <b>Tarde-Noche (6:00 PM)</b> y el de la <b>Mañana (5:15 AM)</b> son los más críticos. Usaremos estos números para exigir que las unidades cubran la capacidad necesaria. ⏳ 🚍</li>
+                <li>▪️ <b>Participación Total:</b> Estudiantes de todas las facultades, liderados por <b>FCE, FCC y FCA</b>, ya están registrados.</li>
+            </ul>
 
-                <p>⚠️ <b>RECORDATORIO FINAL:</b> El padrón oficial ha sido actualizado. Como se avisó, este registro es <b>VITAL</b> para garantizar tu cupo y seguridad en la ruta. El verano se acaba, pero nuestro compromiso por una movilidad segura y organizada para este <b>2026-A</b> está más fuerte que nunca. ☀️ 🔵</p>
-                
-                <p style="font-style: italic; margin-top: 10px;">Atentamente, <b>Delegado Sebastian – Movilidad Ventanilla</b> 👦🏻 🚌</p>
-                <p style="text-align: center; font-weight: bold; margin-top: 15px;">¡Gracias por ser parte del cambio! Nos vemos en la ruta este 1 de abril. 🗺️ 🙌</p>
+            <p>⚠️ <b>RECORDATORIO FINAL:</b> El padrón oficial ha sido actualizado. Este registro es <b>VITAL</b> para garantizar tu cupo. El verano se acaba, pero nuestro compromiso para este <b>2026-A</b> está más fuerte que nunca. ☀️ 🔵</p>
+            
+            <p style="font-style: italic; margin-top: 10px;">Atentamente, <b>Delegado Sebastian – Movilidad Ventanilla</b> 👦🏻 🚌</p>
+            <p style="text-align: center; font-weight: bold; margin-top: 10px;">¡Gracias por ser parte del cambio! Nos vemos en la ruta este 1 de abril. 🗺️ 🙌</p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="font-size: 10px; text-align: center;">FACULTAD</h3>
+                <canvas id="chartFacultad"></canvas>
             </div>
-
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; background: #fdfdfd;">
-                <div style="flex: 1 1 250px; max-width: 300px;">
-                    <h3 style="font-size: 11px; text-align: center;">FACULTAD (OBLIGATORIO)</h3>
-                    <canvas id="chartFacultad"></canvas>
-                </div>
-                <div style="flex: 1 1 250px; max-width: 300px;">
-                    <h3 style="font-size: 11px; text-align: center;">HORARIOS MÁS SOLICITADOS</h3>
-                    <canvas id="chartHorarios"></canvas>
-                </div>
-                <div style="flex: 1 1 250px; max-width: 300px;">
-                    <h3 style="font-size: 11px; text-align: center;">RATIFICACIÓN Y VOTO DE CONFIANZA</h3>
-                    <canvas id="chartVoto"></canvas>
-                </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="font-size: 10px; text-align: center;">HORARIOS</h3>
+                <canvas id="chartHorarios"></canvas>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="font-size: 10px; text-align: center;">VOTO DE CONFIANZA</h3>
+                <canvas id="chartVoto"></canvas>
             </div>
         </div>
-        <a href="#" class="btn-azul" style="margin-top: 20px; display: inline-block;">Descargar Reporte PDF</a>
     </div>
-
+    <a href="#" class="btn-azul" style="margin-top: 20px;">Ver Reporte Completo</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
@@ -46,72 +42,34 @@
 
 <script>
     Chart.register(ChartDataLabels);
-
-    const commonOptions = {
-        plugins: {
-            datalabels: {
-                color: '#fff',
-                font: { weight: 'bold', size: 10 },
-                formatter: (v) => v + '%'
-            }
-        }
-    };
-
     window.onload = function() {
-        // 1. Gráfico Facultad
+        const commonOptions = { plugins: { datalabels: { color: '#fff', font: { weight: 'bold', size: 9 }, formatter: (v) => v + '%' } } };
+
         new Chart(document.getElementById('chartFacultad'), {
             type: 'pie',
             data: {
                 labels: ['FCE', 'FCC', 'FCA', 'FIEE', 'FIQ', 'FIARN', 'Otros'],
-                datasets: [{
-                    data: [16.8, 11.3, 11.3, 11.3, 9.8, 7.5, 32],
-                    backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a']
-                }]
+                datasets: [{ data: [16.8, 11.3, 11.3, 11.3, 9.8, 7.5, 32], backgroundColor: ['#fbbc04', '#4285f4', '#ea4335', '#34a853', '#9334e6', '#12b5cb', '#70757a'] }]
             },
-            options: {
-                plugins: {
-                    legend: { position: 'bottom', labels: { boxWidth: 8, font: { size: 8 } } },
-                    datalabels: commonOptions.plugins.datalabels
-                }
-            }
+            options: { plugins: { legend: { display: false }, datalabels: commonOptions.plugins.datalabels } }
         });
 
-        // 2. Gráfico Horarios
         new Chart(document.getElementById('chartHorarios'), {
             type: 'bar',
             data: {
                 labels: ['6:00 PM', '5:15 AM', '2:30 PM', '10:15 PM'],
-                datasets: [{
-                    data: [74.3, 68.3, 46.3, 32],
-                    backgroundColor: '#a2d2df'
-                }]
+                datasets: [{ data: [74.3, 68.3, 46.3, 32], backgroundColor: '#a2d2df' }]
             },
-            options: {
-                indexAxis: 'y',
-                scales: { x: { display: false }, y: { grid: { display: false }, ticks: { font: { size: 9 } } } },
-                plugins: {
-                    legend: { display: false },
-                    datalabels: { anchor: 'end', align: 'start', color: '#444', font: { weight: 'bold', size: 10 }, formatter: (v) => v + '%' }
-                }
-            }
+            options: { indexAxis: 'y', plugins: { legend: { display: false }, datalabels: { anchor: 'end', align: 'start', color: '#444' } } }
         });
 
-        // 3. Gráfico Voto (94.3%)
         new Chart(document.getElementById('chartVoto'), {
             type: 'pie',
             data: {
                 labels: ['SÍ', 'NO'],
-                datasets: [{
-                    data: [94.3, 5.7],
-                    backgroundColor: ['#3367d6', '#d93025']
-                }]
+                datasets: [{ data: [94.3, 5.7], backgroundColor: ['#3367d6', '#d93025'] }]
             },
-            options: {
-                plugins: {
-                    legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } },
-                    datalabels: commonOptions.plugins.datalabels
-                }
-            }
+            options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 8 } } }, datalabels: commonOptions.plugins.datalabels } }
         });
     };
 </script>
