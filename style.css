@@ -19,12 +19,13 @@ body, html {
     padding: 0 8%;
     position: relative;
     
-    /* MODIFICACIÓN AQUÍ: Se cambió la URL de Unsplash por tu archivo 1444.png */
+    /* ESTA ES LA LÍNEA CLAVE: Debe decir 1444.png */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                 url('1444.png'); 
+    
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Mantiene la imagen fija al bajar */
+    background-attachment: fixed;
 }
 
 /* Navegación */
