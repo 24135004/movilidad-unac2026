@@ -18,11 +18,13 @@ body, html {
     justify-content: space-between;
     padding: 0 8%;
     position: relative;
-    /* Cambia esta URL por la foto de la UNAC que tengas en tu carpeta */
+    
+    /* MODIFICACIÓN AQUÍ: Se cambió la URL de Unsplash por tu archivo 1444.png */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?q=80&w=2000');
+                url('1444.png'); 
     background-size: cover;
     background-position: center;
+    background-attachment: fixed; /* Mantiene la imagen fija al bajar */
 }
 
 /* Navegación */
