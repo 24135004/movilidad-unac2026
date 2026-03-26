@@ -88,7 +88,7 @@
             width: 100%;
             padding: 20px;
             margin-bottom: 30px;
-            overflow-x: auto; /* Permite scroll horizontal en tablas si es necesario */
+            overflow-x: auto;
             text-align: left;
         }
         .internal-header { color: #ffb400; font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; }
@@ -118,7 +118,7 @@
         }
         .item { text-align: center; min-width: 100px; flex: 1; }
         .item strong { display: block; color: #ffb400; font-size: 1rem; }
-        .item p { font-size: 0.65rem; color: #666; margin-top: 5px; text-transform: uppercase; }
+        .item p { font-size: 0.65rem; color: #666; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
         /* AJUSTES CELULAR */
         @media (max-width: 768px) {
@@ -126,7 +126,7 @@
             .menu { justify-content: center; }
             .hero { padding: 30px 15px; }
             .stats { justify-content: center; }
-            .item { min-width: 45%; } /* Dos por fila */
+            .item { min-width: 45%; }
             .table-container { padding: 15px; }
         }
     </style>
@@ -140,7 +140,7 @@
             <a href="horarios.html" class="active">Horarios</a>
             <a href="rutas.html">Rutas</a>
             <a href="noticias.html">Noticias</a>
-            <a href="#" class="consultas">Consultas</a>
+            <a href="consultas.html" class="consultas">Consultas</a>
         </div>
     </nav>
 
