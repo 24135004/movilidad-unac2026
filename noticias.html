@@ -15,7 +15,7 @@
             line-height: 1.6;
         }
 
-        /* NAVBAR */
+        /* NAVBAR - CORREGIDA Y UNIFICADA */
         .navbar {
             width: 100%;
             display: flex;
@@ -35,9 +35,10 @@
         .menu { display: flex; align-items: center; gap: 20px; }
         .menu a { color: #fff; text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
         .menu a:hover, .menu a.active { color: #ffb400; }
-        .btn-consultas { border: 1px solid #ffb400; padding: 6px 15px; border-radius: 5px; }
+        /* Botón de consultas estilo Rutas/Horarios */
+        .menu a.consultas { color: #fff; border: 1px solid #ffb400; border-radius: 4px; padding: 4px 8px; }
 
-        /* CABECERA */
+        /* CABECERA SEGÚN IMAGEN 11 */
         .hero-header {
             text-align: center;
             padding: 60px 20px 40px;
@@ -119,7 +120,7 @@
             <a href="horarios.html">Horarios</a>
             <a href="rutas.html">Rutas</a>
             <a href="noticias.html" class="active">Noticias</a>
-            <a href="consultas.html" class="btn-consultas">Consultas</a>
+            <a href="consultas.html" class="consultas">Consultas</a>
         </div>
     </nav>
 
