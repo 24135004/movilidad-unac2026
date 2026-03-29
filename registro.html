@@ -171,7 +171,8 @@
             <div class="data-item"><label>Facultad:</label><p id="resFacultad">-</p></div>
             <div class="data-item"><label>Horario:</label><p id="resHorario">-</p></div>
             <div class="data-item"><label>Conformidad con Delegado:</label><p id="resConforme">-</p></div>
-            <div class="status-badge">RUTA VENTANILLA ✅</div>
+            
+            <div class="status-badge">EN RUTA VENTANILLA ✅</div>
         </div>
 
         <div class="error-container" id="errorBox">
@@ -190,10 +191,12 @@
 
         searchBtn.addEventListener('click', () => {
             const dni = document.getElementById('dniInput').value.trim();
-            if(!dni) return;
+            if(!dni) return alert("Ingresa un DNI");
 
             searchBtn.innerText = "BUSCANDO...";
             searchBtn.disabled = true;
+            
+            // Limpiar vistas previas
             resultsBox.style.display = 'none';
             errorBox.style.display = 'none';
 
@@ -204,19 +207,15 @@
                     searchBtn.disabled = false;
                     
                     if(data.found) {
-                        // --- LÓGICA DE PROTECCIÓN DE IDENTIDAD ---
-                        
-                        // 1. Solo primer nombre
+                        // --- PRIVACIDAD ---
                         const nombreCompleto = data.Nombres || "";
                         const primerNombre = nombreCompleto.split(' ')[0];
                         document.getElementById('resNombre').innerText = primerNombre + " ************";
 
-                        // 2. Solo primeros 2 dígitos del código
                         const codigoFull = data.Codigo.toString();
                         const codigoProtegido = codigoFull.substring(0, 2) + "********";
                         document.getElementById('resCodigo').innerText = codigoProtegido;
 
-                        // Datos normales
                         document.getElementById('resFacultad').innerText = data.Facultad;
                         document.getElementById('resHorario').innerText = data.Horario;
                         
@@ -224,21 +223,21 @@
                         const valorConforme = (data.Conforme || "No especificado").toString().toUpperCase();
                         conformeElem.innerText = valorConforme;
                         
+                        // Color dinámico SÍ/NO
                         if (valorConforme === 'SÍ' || valorConforme === 'SI') {
                             conformeElem.style.color = '#a6f3b7';
                         } else if (valorConforme === 'NO') {
                             conformeElem.style.color = '#ff4444';
-                        } else {
-                            conformeElem.style.color = '#fff';
                         }
                         
                         resultsBox.style.display = 'block';
+                        resultsBox.scrollIntoView({ behavior: 'smooth' });
                     } else {
                         errorBox.style.display = 'block';
                     }
                 }).catch(() => {
                     searchBtn.disabled = false;
-                    alert("Error de conexión.");
+                    alert("Error de conexión con la base de datos.");
                 });
         });
     </script>
