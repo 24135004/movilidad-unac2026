@@ -17,8 +17,6 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-
-            /* FONDO DE RUTAS */
             background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
                         url('486135019_1066064098880646_4598676692904469015444.jpg'); 
             background-size: cover;
@@ -26,13 +24,12 @@
             background-attachment: fixed;
         }
 
-        /* ANIMACIONES */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* NAVBAR IDÉNTICA */
+        /* NAVBAR */
         .navbar {
             width: 100%;
             display: flex;
@@ -48,7 +45,6 @@
         }
         .logo { font-weight: bold; font-size: 0.8rem; line-height: 1.2; }
         .logo span { color: #ffb400; }
-        
         .menu { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
         .menu a { color: #fff; text-decoration: none; font-size: 0.75rem; padding: 5px; }
         .menu a.active { color: #ffb400; font-weight: bold; }
@@ -62,14 +58,8 @@
             text-align: center;
         }
 
-        .section-tag { 
-            color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; display: block; 
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-        .section-title { 
-            font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; line-height: 1.1;
-            animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;
-        }
+        .section-tag { color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; display: block; animation: fadeInUp 0.6s ease-out forwards; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; line-height: 1.1; animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; }
 
         /* CARD DE BÚSQUEDA */
         .card-box {
@@ -109,8 +99,8 @@
         }
         .btn-search:hover { background: #fff; transform: scale(1.05); }
 
-        /* CONTENEDOR DE RESULTADOS */
-        .results-container {
+        /* RESULTADOS Y MENSAJE DE ERROR */
+        .results-container, .error-container {
             display: none;
             text-align: left;
             background: rgba(10, 10, 10, 0.9);
@@ -118,14 +108,12 @@
             padding: 25px;
             border-radius: 12px;
             margin-top: 20px;
+            animation: fadeInUp 0.5s ease-out;
         }
 
         .data-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
         .data-item label { color: #ffb400; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; display: block; }
         .data-item p { font-size: 1.1rem; margin-top: 4px; }
-
-        /* Estilo para la respuesta de conformidad */
-        #resConforme { font-weight: bold; }
 
         .status-badge {
             background: rgba(45, 164, 78, 0.2);
@@ -137,6 +125,18 @@
             border: 1px solid #2da44e;
             margin-top: 20px;
         }
+
+        /* DISEÑO PARA DNI NO ENCONTRADO */
+        .error-badge {
+            background: rgba(255, 68, 68, 0.15);
+            color: #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 68, 68, 0.4);
+        }
+        .error-badge h3 { font-size: 1rem; margin-bottom: 5px; }
+        .error-badge p { font-size: 0.8rem; opacity: 0.8; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 10px; text-align: center; }
@@ -174,8 +174,14 @@
             <div class="data-item"><label>Facultad:</label><p id="resFacultad">-</p></div>
             <div class="data-item"><label>Horario:</label><p id="resHorario">-</p></div>
             <div class="data-item"><label>Conformidad con Delegado:</label><p id="resConforme">-</p></div>
-            
             <div class="status-badge">MATRÍCULA CONFIRMADA EN RUTA VENTANILLA ✅</div>
+        </div>
+
+        <div class="error-container" id="errorBox">
+            <div class="error-badge">
+                <h3>❌ DNI NO ENCONTRADO</h3>
+                <p id="errorMsg">El número ingresado no figura en el padrón actual de la Ruta Ventanilla.</p>
+            </div>
         </div>
     </main>
 
@@ -183,14 +189,18 @@
         const API_URL = 'https://script.google.com/macros/s/AKfycbzvOKvaSny1fecoF3Sd18Nsu3GlQgNfvUtEA1bPHiFXJVSlbkmSO47bwS71_dTbC5-Q/exec';
         const searchBtn = document.getElementById('searchBtn');
         const resultsBox = document.getElementById('resultsBox');
+        const errorBox = document.getElementById('errorBox');
 
         searchBtn.addEventListener('click', () => {
             const dni = document.getElementById('dniInput').value.trim();
-            if(!dni) return alert("Por favor, ingresa un DNI.");
+            if(!dni) return;
 
             searchBtn.innerText = "BUSCANDO...";
             searchBtn.disabled = true;
+            
+            // Ocultamos ambos cuadros antes de buscar
             resultsBox.style.display = 'none';
+            errorBox.style.display = 'none';
 
             fetch(API_URL + '?dni=' + dni)
                 .then(res => res.json())
@@ -204,25 +214,21 @@
                         document.getElementById('resFacultad').innerText = data.Facultad;
                         document.getElementById('resHorario').innerText = data.Horario;
                         
-                        // Lógica para mostrar Conformidad (Columna K)
                         const conformeElem = document.getElementById('resConforme');
                         const valorConforme = (data.Conforme || "No especificado").toString().toUpperCase();
-                        
                         conformeElem.innerText = valorConforme;
                         
-                        // Cambio de color dinámico
+                        // Color dinámico
                         if (valorConforme === 'SÍ' || valorConforme === 'SI') {
-                            conformeElem.style.color = '#a6f3b7'; // Verde
+                            conformeElem.style.color = '#a6f3b7';
                         } else if (valorConforme === 'NO') {
-                            conformeElem.style.color = '#ff4444'; // Rojo
-                        } else {
-                            conformeElem.style.color = '#fff'; // Blanco por defecto
+                            conformeElem.style.color = '#ff4444';
                         }
                         
                         resultsBox.style.display = 'block';
-                        resultsBox.scrollIntoView({ behavior: 'smooth' });
                     } else {
-                        alert("No se encontró el DNI " + dni + " en el padrón actual.");
+                        // MUESTRA EL CUADRO DE ERROR SI NO EXISTE
+                        errorBox.style.display = 'block';
                     }
                 }).catch(() => {
                     searchBtn.disabled = false;
