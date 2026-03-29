@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Movilidad UNAC</title>
+    <style>
+        /* RESET Y BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Fondo calcado de tus otras vistas */
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url('Azul Viaje Ofertas y Descuentos Sitio Web (2).png'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* NAVBAR IDÉNTICO */
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1a1a1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-weight: bold; font-size: 0.8rem; line-height: 1.2; text-align: left;}
+        .logo span { color: #ffb400; }
+        
+        .menu { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        .menu a { color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 500; transition: 0.3s; }
+        .menu a:hover { color: #ffb400; }
+        .menu a.active { color: #ffb400; font-weight: bold; }
+        .menu a.consultas { border: 1px solid #ffb400; padding: 5px 12px; border-radius: 5px; }
+        .menu a.consultas:hover { background: #ffb400; color: #000; }
+
+        .main-content {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        /* TEXTOS DE CABECERA */
+        .section-tag { 
+            color: #ffb400; font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; display: block; 
+            text-transform: uppercase;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .section-title { 
+            font-size: 2.5rem; font-weight: 800; margin-bottom: 15px; line-height: 1.1;
+            animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;
+        }
+        .section-description { 
+            color: #ccc; font-size: 1rem; margin: 0 auto 30px auto; line-height: 1.5; 
+            animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;
+        }
+
+        /* --- CONTENEDOR TIPO TARJETA --- */
+        .card-box {
+            background: rgba(20, 25, 35, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- BANNER DE BÚSQUEDA --- */
+        .banner-lookup {
+            animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;
+        }
+        
+        .search-input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 180, 0, 0.5);
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        input[type="text"]:focus {
+            border-color: #ffb400;
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 180, 0, 0.4);
+        }
+
+        button#searchBtn {
+            background: #ffb400;
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        button#searchBtn:hover { background: #fff; transform: scale(1.05); }
+
+        /* --- SECCIÓN DE RESULTADOS --- */
+        .results-section {
+            display: none; 
+            text-align: left;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+        .results-section h2 { color: #ffb400; font-size: 1.2rem; margin-bottom: 20px; text-transform: uppercase; font-weight: 700; text-align: center; border-bottom: 1px solid rgba(255,180,0,0.2); padding-bottom: 10px;}
+
+        /* ITEMS DE DATOS */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .data-item { 
+            background: rgba(255, 255, 255, 0.03); 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 3px solid #ffb400; 
+        }
+        .data-item b { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 5px; text-transform: uppercase; }
+        .data-item p { font-size: 1.1rem; color: #fff; font-weight: 500;}
+
+        /* CUADRO DE ESTADO */
+        .status-box { padding: 15px; border-radius: 8px; margin-top: 25px; font-weight: bold; text-align: center; border-left: 5px solid; font-size: 1.1rem;}
+        .valid { background: rgba(45, 164, 78, 0.15); border-color: #2da44e; color: #a6f3b7; }
+        .invalid { background: rgba(248, 81, 73, 0.15); border-color: #f85149; color: #ffb3b0; }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 10px; text-align: center; }
+            .menu { justify-content: center; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">UNIVERSIDAD NACIONAL DEL CALLAO<br><span>MOVILIDAD UNIVERSITARIA</span></div>
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="horarios.html">Horarios</a>
+            <a href="rutas.html">Rutas</a>
+            <a href="registro.html" class="active">Registro</a>
+            <a href="noticias.html">Noticias</a>
+            <a href="consultas.html" class="consultas">Consultas</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <span class="section-tag">Empadronamiento 2026-A</span>
+        <h1 class="section-title">Consulta tu Registro</h1>
+        <p class="section-description">
+            Ingresa tu número de DNI para verificar tu estado en el padrón de la Ruta Ventanilla y confirmar tu asiento asignado.
+        </p>
+
+        <div class="card-box banner-lookup">
+            <div class="search-input-group">
+                <input type="text" id="dniInput" maxlength="8" placeholder="Ingresa tu DNI (8 dígitos)">
+                <button id="searchBtn">Buscar Alumno</button>
+            </div>
+        </div>
+
+        <div class="card-box results-section" id="resultsSection">
+            <h2>Datos del Estudiante Registrado</h2>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <b>DNI:</b>
+                    <p id="dniRes">-</p>
+                </div>
+                <div class="data-item">
+                    <b>Nombres y Apellidos:</b>
+                    <p id="nombresRes">-</p>
+                </div>
+                <div class="data-item">
+                    <b>Código UNAC:</b>
+                    <p id="codigoRes">-</p>
+                </div>
+                <div class="data-item">
+                    <b>Facultad:</b>
+                    <p id="facultadRes">-</p>
+                </div>
+                <div class="data-item" style="border-left-color: #2da44e;">
+                    <b>Horario:</b>
+                    <p id="horarioRes">-</p>
+                </div>
+                <div class="data-item" style="border-left-color: #2da44e; background: rgba(45, 164, 78, 0.1);">
+                    <b>Asiento Asignado:</b>
+                    <p id="asientoRes" style="font-size: 1.5rem; color: #a6f3b7; font-weight: bold;">-</p>
+                </div>
+            </div>
+
+            <div id="statusBox" class="status-box">
+                <p id="statusText">Verificando...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- CONFIGURACIÓN DE TU GOOGLE SHEET ---
+        // Aquí deberás pegar la URL que te dé Google Apps Script cuando lo implementes.
+        // Mientras tanto, he dejado un código de simulación para que veas que la interfaz funciona perfecto.
+        const API_URL = ''; 
+
+        const dniInput = document.getElementById('dniInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsSection = document.getElementById('resultsSection');
+        
+        // Función principal
+        searchBtn.addEventListener('click', function() {
+            const dni = dniInput.value.trim();
+            resultsSection.style.display = 'none';
+
+            if (dni.length !== 8 || isNaN(dni)) {
+                alert('Por favor, ingresa un DNI válido de 8 números.');
+                return;
+            }
+
+            searchBtn.innerText = 'Buscando...';
+            searchBtn.disabled = true;
+
+            // SIMULACIÓN (Borrar cuando conectes tu Google Sheet real)
+            setTimeout(() => {
+                const baseSimulada = {
+                    '12345678': { DNI: '12345678', Nombres: 'Juan Perez', Codigo: '2026100000', Facultad: 'Ing. Química', Horario: '6:00 PM', Asiento: '12', Estado: 'VALIDADO' },
+                };
+
+                const data = baseSimulada[dni];
+                searchBtn.innerText = 'Buscar Alumno';
+                searchBtn.disabled = false;
+
+                if (data) {
+                    document.getElementById('dniRes').innerText = data.DNI;
+                    document.getElementById('nombresRes').innerText = data.Nombres;
+                    document.getElementById('codigoRes').innerText = data.Codigo;
+                    document.getElementById('facultadRes').innerText = data.Facultad;
+                    document.getElementById('horarioRes').innerText = data.Horario;
+                    document.getElementById('asientoRes').innerText = data.Asiento;
+
+                    const statusBox = document.getElementById('statusBox');
+                    const statusText = document.getElementById('statusText');
+
+                    if (data.Estado === 'VALIDADO') {
+                        statusBox.className = 'status-box valid';
+                        statusText.innerText = '✅ REGISTRO CONFIRMADO. Estás en el padrón.';
+                    } else {
+                        statusBox.className = 'status-box invalid';
+                        statusText.innerText = '❌ REGISTRO PENDIENTE O INVÁLIDO.';
+                    }
+
+                    resultsSection.style.display = 'block';
+                } else {
+                    alert('DNI no encontrado en el padrón. Asegúrate de haber completado el formulario de empadronamiento.');
+                }
+            }, 800);
+            // FIN DE SIMULACIÓN
+
+            /* // CUANDO TENGAS TU LINK DE APPS SCRIPT, DESCOMENTA ESTO Y BORRA LA SIMULACIÓN DE ARRIBA:
+            fetch(API_URL + '?dni=' + dni)
+                .then(response => response.json())
+                .then(data => {
+                    searchBtn.innerText = 'Buscar Alumno';
+                    searchBtn.disabled = false;
+                    // Aquí iría la misma lógica de llenado de datos de arriba
+                })
+                .catch(error => {
+                    searchBtn.innerText = 'Buscar Alumno';
+                    searchBtn.disabled = false;
+                    alert('Error de conexión. Intenta de nuevo.');
+                });
+            */
+        });
+    </script>
+</body>
+</html>
