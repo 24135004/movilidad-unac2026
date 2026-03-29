@@ -82,6 +82,7 @@
         .news-tag { color: #ffb400; font-weight: bold; font-size: 0.85rem; margin-bottom: 10px; display: block; }
         .news-title { font-size: 1.6rem; margin-bottom: 25px; border-bottom: 2px solid #ffb400; padding-bottom: 10px; line-height: 1.3; }
         
+        /* DISEÑO PARA LAPTOP (2 COLUMNAS) */
         .dashboard-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -111,9 +112,13 @@
         .footer-sig { margin-top: 30px; font-weight: bold; color: #ffb400; text-align: right; }
         .thanks-footer { text-align: center; font-weight: bold; font-size: 1.1rem; margin-top: 25px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        @media (max-width: 650px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
+        /* CORRECCIÓN PARA CELULAR (1 COLUMNA) */
+        @media (max-width: 768px) {
+            .dashboard-grid { 
+                grid-template-columns: 1fr; /* Una gráfica debajo de otra */
+            }
             .hero-header h1 { font-size: 2.2rem; }
+            .news-card { padding: 20px; }
         }
     </style>
 </head>
@@ -154,13 +159,12 @@
                     <div class="chart-card"><h3>RATIFICACIÓN Y VOTO DE CONFIANZA</h3><canvas id="chartVoto"></canvas></div>
                 </div>
 
-                <div class="item"><b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un 93.4% de aprobación a la gestión actual. Este voto de confianza nos motiva a seguir luchando por un servicio de calidad. ✅🤝</div>
-                <div class="item"><b>Demanda de Horarios:</b> Hemos identificado que el turno Tarde-Noche (6:00 PM) y el de la Mañana (5:15 AM) son los más críticos. Usaremos estos números para exigir que las unidades cubran la capacidad necesaria y nadie se quede fuera. ⏳🚍</div>
-                <div class="item"><b>Participación Total:</b> Estudiantes de todas las facultades, liderados por FCE, FCC y FCA, ya están registrados. ¡Somos una sola comunidad universitaria! 🏛️👥</div>
+                <div class="item"><b>Respaldo Contundente:</b> ¡Gracias por la confianza! Contamos con un 94.3% de aprobación a la gestión actual. ✅🤝</div>
+                <div class="item"><b>Demanda de Horarios:</b> El turno Tarde-Noche (6:00 PM) y el de la Mañana (5:15 AM) son los más críticos. ⏳🚍</div>
+                <div class="item"><b>Participación Total:</b> Estudiantes de todas las facultades ya están registrados. 🏛️👥</div>
             </div>
             
-            <p style="margin-top: 20px;">⚠️ <b>RECORDATORIO FINAL:</b> El padrón oficial ha sido actualizado. Como se avisó, este registro es VITAL para garantizar tu cupo y seguridad en la ruta. El verano se acaba, pero nuestro compromiso por una movilidad segura y organizada para este 2026-A está más fuerte que nunca. ☀️🛡️</p>
-            
+            <p style="margin-top: 20px;">⚠️ <b>RECORDATORIO FINAL:</b> El padrón oficial ha sido actualizado. Este registro es VITAL para garantizar tu cupo y seguridad. ☀️🛡️</p>
             <p class="footer-sig">Atentamente, Delegado Sebastian – Movilidad Ventanilla 🫡🚌</p>
             <p class="thanks-footer">¡Gracias por ser parte del cambio! Nos vemos en la ruta este 30 de marzo. 🛣️🙌</p>
         </div>
@@ -168,37 +172,19 @@
         <div class="news-card">
             <span class="news-tag">INNOVACIÓN</span>
             <h2 class="news-title">🚀 ¡INNOVACIÓN TECNOLÓGICA Y ORDEN EN LA RUTA! 🚌📲</h2>
-            <p>¡Hola de nuevo, compañeros y compañeras! 👋😊 Seguimos modernizando nuestra gestión para que este 30 de abril todo sea más eficiente. Como su delegado 🫡, les presento la nueva logística digital diseñada para eliminar las colas y asegurar el orden, cumpliendo con la votación realizada anteriormente:</p>
+            <p>¡Hola de nuevo, compañeros y compañeras! 👋😊 Seguimos modernizando nuestra gestión para que este 30 de abril todo sea más eficiente. Como su delegado 🫡, les presento la nueva logística digital diseñada para eliminar las colas:</p>
 
             <div class="sub-section">
                 <span class="sub-title">✅ ASÍ SERÁ EL NUEVO PROCESO DE ACCESO:</span>
-                <p>Al completar el formulario, el sistema validará tus datos automáticamente y enviará una respuesta inmediata a tu Gmail:</p>
-                <div class="status-box green">
-                    <b>¡VERIFICACIÓN CORRECTA! (Pase Verde):</b> Si tus datos son válidos, recibirás tu correo de confirmación con tu <b>NÚMERO DE ASIENTO OFICIAL</b> (Cupos limitados a 40 asientos). 💺🔢
-                </div>
-                <div class="status-box red">
-                    <b>VERIFICACIÓN INCORRECTA (Aviso Rojo):</b> Si ingresas mal tu DNI o Código, el sistema rechazará la solicitud. <b>IMPORTANTE:</b> Con una verificación incorrecta NO se te asignará un asiento, ya que el registro no será válido para el padrón oficial. ❌⚠️
-                </div>
+                <div class="status-box green"><b>¡VERIFICACIÓN CORRECTA! (Pase Verde):</b> Recibirás tu <b>NÚMERO DE ASIENTO OFICIAL</b>. 💺🔢</div>
+                <div class="status-box red"><b>VERIFICACIÓN INCORRECTA (Aviso Rojo):</b> NO se te asignará un asiento. ❌⚠️</div>
             </div>
 
             <div class="sub-section">
                 <span class="sub-title">⏳ LOGÍSTICA EN TIEMPO REAL:</span>
-                <div class="item"><b>📅 Cierre de Padrón:</b> El formulario se procesa y envía automáticamente una vez hayas completado el formulario 🙃.</div>
-                <div class="item"><b>🚍 Llegada del Bus:</b> La movilidad estará en el punto de partida a las 6:00 PM (puntualidad).</div>
-                <div class="item"><b>🤳 Abordaje Rápido:</b> ¡Olvídate de hacer colas! Ya no habrá listas manuales. Para subir, solo acércate con tu celular y muestra el correo de verificación. ✅</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="sub-title">⚠️ SOBRE LOS ASIENTOS (ACUERDO GENERAL):</span>
-                <p>Tal como se decidió por votación previa, el orden de prioridad es:</p>
-                <div class="item"><b>🏆 Con Registro Válido:</b> Quienes reciban su ¡Verificación Correcta! una vez completado el formulario tienen su asiento asegurado y numerado.</div>
-                <div class="item"><b>🚶 Sin Registro o Incorrectos:</b> Si no llenaste el formulario o tu verificación fue incorrecta, podrás subir a la unidad, pero lamentablemente viajarás sin asiento asignado. <b>¡La movilidad es GRATUITA PARA TODOS!</b> 🟢💺</div>
-            </div>
-
-            <div class="sub-section">
-                <span class="sub-title">💡 RECOMENDACIONES:</span>
-                <div class="item"><b>🔋 Batería cargada:</b> Ten tu celular listo para mostrar el pase digital al subir.</div>
-                <div class="item"><b>⏱️ Puntualidad:</b> Ten el correo abierto antes de llegar a la puerta para un abordaje fluido.</div>
+                <div class="item"><b>📅 Cierre de Padrón:</b> Se procesa automáticamente al completar el formulario🙃.</div>
+                <div class="item"><b>🚍 Llegada del Bus:</b> Estará en el punto de partida a las 6:00 PM.</div>
+                <div class="item"><b>🤳 Abordaje Rápido:</b> Solo muestra el correo de verificación. ✅</div>
             </div>
 
             <p style="margin-top: 20px;">Estamos usando la tecnología para que tu viaje sea seguro y organizado. ¡Nos vemos en la ruta! 🎓📚</p>
