@@ -124,6 +124,9 @@
         .data-item label { color: #ffb400; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; display: block; }
         .data-item p { font-size: 1.1rem; margin-top: 4px; }
 
+        /* Estilo para la respuesta de conformidad */
+        #resConforme { font-weight: bold; }
+
         .status-badge {
             background: rgba(45, 164, 78, 0.2);
             color: #a6f3b7;
@@ -177,7 +180,6 @@
     </main>
 
     <script>
-        // URL DE TU GOOGLE APPS SCRIPT
         const API_URL = 'https://script.google.com/macros/s/AKfycbzvOKvaSny1fecoF3Sd18Nsu3GlQgNfvUtEA1bPHiFXJVSlbkmSO47bwS71_dTbC5-Q/exec';
         const searchBtn = document.getElementById('searchBtn');
         const resultsBox = document.getElementById('resultsBox');
@@ -195,14 +197,27 @@
                 .then(data => {
                     searchBtn.innerText = "VERIFICAR REGISTRO";
                     searchBtn.disabled = false;
+                    
                     if(data.found) {
                         document.getElementById('resNombre').innerText = data.Nombres;
                         document.getElementById('resCodigo').innerText = data.Codigo;
                         document.getElementById('resFacultad').innerText = data.Facultad;
                         document.getElementById('resHorario').innerText = data.Horario;
                         
-                        // Mostramos si el alumno está conforme o no
-                        document.getElementById('resConforme').innerText = data.Conforme || "No especificado";
+                        // Lógica para mostrar Conformidad (Columna K)
+                        const conformeElem = document.getElementById('resConforme');
+                        const valorConforme = (data.Conforme || "No especificado").toString().toUpperCase();
+                        
+                        conformeElem.innerText = valorConforme;
+                        
+                        // Cambio de color dinámico
+                        if (valorConforme === 'SÍ' || valorConforme === 'SI') {
+                            conformeElem.style.color = '#a6f3b7'; // Verde
+                        } else if (valorConforme === 'NO') {
+                            conformeElem.style.color = '#ff4444'; // Rojo
+                        } else {
+                            conformeElem.style.color = '#fff'; // Blanco por defecto
+                        }
                         
                         resultsBox.style.display = 'block';
                         resultsBox.scrollIntoView({ behavior: 'smooth' });
