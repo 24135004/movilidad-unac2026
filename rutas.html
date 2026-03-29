@@ -16,8 +16,6 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
-
-            /* CONFIGURACIÓN DE IMAGEN DE FONDO */
             background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
                         url('486135019_1066064098880646_4598676692904469015444.jpg'); 
             background-size: cover;
@@ -25,7 +23,6 @@
             background-attachment: fixed;
         }
 
-        /* ANIMACIONES */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -37,7 +34,6 @@
             100% { box-shadow: 0 0 5px rgba(255, 180, 0, 0.2); }
         }
 
-        /* NAVBAR */
         .navbar {
             width: 100%;
             display: flex;
@@ -80,7 +76,6 @@
             animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;
         }
 
-        /* GRID INFO CON EFECTO CRISTAL */
         .grid-info {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -100,7 +95,6 @@
 
         h2 { color: #ffb400; font-size: 1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-weight: 700; }
 
-        /* PARADEROS ACTUALIZADOS */
         .stop-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .stop-item { 
             background: rgba(255, 255, 255, 0.05); padding: 12px; border-radius: 8px; font-size: 0.8rem; 
@@ -115,7 +109,6 @@
             background: rgba(255, 180, 0, 0.1);
         }
 
-        /* DOCUMENTOS */
         .doc-item { background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #ffb400; transition: 0.3s; }
         .doc-item:hover { background: rgba(255, 255, 255, 0.1); transform: scale(1.02); }
         .doc-item b { display: block; font-size: 0.9rem; color: #ffb400; margin-bottom: 5px; }
@@ -126,19 +119,25 @@
             border-radius: 10px; border-left: 5px solid #ff4444; margin-top: 20px; 
         }
 
-        /* MAPA */
+        /* MAPA CORREGIDO A LARGO COMPLETO */
         .map-section { 
-            width: 100%; background: rgba(20, 25, 35, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; 
-            padding: 15px; margin-top: 20px;
+            width: 100%; 
+            background: rgba(20, 25, 35, 0.8); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-top: 20px;
             animation: fadeInUp 0.8s ease-out 0.5s forwards; opacity: 0;
+            text-align: left;
         }
-        .map-header { text-align: left; margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ffb400; }
+        .map-header { margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: #ffb400; }
         
         .map-container {
             position: relative;
             overflow: hidden;
             width: 100%;
-            padding-top: 45%; 
+            padding-top: 35%; /* Reducido para que se vea más largo en horizontal */
             border-radius: 10px;
         }
         .map-container iframe {
@@ -147,15 +146,14 @@
             border: none;
         }
 
-        /* FOOTER STATS */
         .stats { 
             background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-around; padding: 25px 5%; 
             border-top: 1px solid #222; width: 100%; margin-top: 40px; flex-wrap: wrap; gap: 15px;
             animation: fadeInUp 0.8s ease-out 0.6s forwards; opacity: 0;
         }
-        .item { text-align: center; min-width: 100px; flex: 1; }
-        .item strong { display: block; color: #ffb400; font-size: 1rem; margin-bottom: 5px; }
-        .item p { font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .item-stat { text-align: center; min-width: 100px; flex: 1; }
+        .item-stat strong { display: block; color: #ffb400; font-size: 1rem; margin-bottom: 5px; }
+        .item-stat p { font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 10px; text-align: center; }
@@ -163,7 +161,7 @@
             .section-title { font-size: 1.8rem; }
             .grid-info { grid-template-columns: 1fr; }
             .stop-list { grid-template-columns: 1fr; }
-            .item { min-width: 45%; }
+            .item-stat { min-width: 45%; }
             .map-container { padding-top: 60%; }
         }
     </style>
@@ -176,7 +174,8 @@
             <a href="index.html">Inicio</a>
             <a href="horarios.html">Horarios</a>
             <a href="rutas.html" class="active">Rutas</a>
-            <a href="registro.html">Registro</a> <a href="noticias.html">Noticias</a>
+            <a href="registro.html">Registro</a> 
+            <a href="noticias.html">Noticias</a>
             <a href="consultas.html" class="consultas">Consultas</a>
         </div>
     </nav>
@@ -231,15 +230,13 @@
                     <p style="margin-top: 10px; font-size: 0.8rem;">Comuníquense con el <strong>delegado 🧐</strong> para ver si hay espacio disponible para subir en los siguientes paraderos 😰.</p>
                 </div>
             </div>
+        </div>
 
         <div class="map-section">
             <div class="map-header">🗺️ Visualización del Recorrido en Google Maps</div>
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m64!1m12!1m3!1d30472.9992456036!2d-77.1375958!3d-12.044987500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m49!3e0!4m5!1s0x9105d526b243bda5%3A0x4f54a232b468d4dd!2sUNAC%20-%20VENTANILLA%2C%205VG8%2BJM6%2C%20Ventanilla%2007076!3m2!1d-11.823452099999999!2d-77.13334929999999!4m3!3m2!1d-11.8252305!2d-77.1234052!4m3!3m2!1d-11.843182599999999!2d-77.101874!4m3!3m2!1d-11.8375611!2d-77.11113209999999!4m5!1s0x9105d43d3b9d9f15%3A0x7484f44b11f271b!2sPolicl%C3%ADnico%20Emanuel%2C%20Ventanilla%2007076!3m2!1d-11.841529999999999!2d-77.11502!4m5!1s0x9105d41212110f83%3A0x3381ebbdfb7c3a11!2sCajamarca%2C%20Mi%20Per%C3%BA%2007056!3m2!1d-11.85413!2d-77.12089!4m3!3m2!1d-11.859558199999999!2d-77.124529!4m3!3m2!1d-11.8754478!2d-77.1269141!4m3!3m2!1d-12.0480583!2d-77.11540509999999!4m5!1s0x9105cb910984762b%3A0x104327c627fa29ad!2sUniversidad%20Nacional%20del%20Callao%2C%20Av.%20Juan%20Pablo%20%E2%85%A1%20306%2C%20Bellavista%2007011!3m2!1d-12.0613052!2d-77.11724869999999!5e1!3m2!1ses-419!2spe!4v1774550929615!5m2!1ses-419!2spe" 
-                    width="600" 
-                    height="450" 
-                    style="border:0;" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124858.33156847846!2d-77.19583486381283!3d-11.969192534563853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105d15024446467%3A0xb36341496a6039ea!2sUniversidad%20Nacional%20del%20Callao!5e0!3m2!1ses-419!2spe!4v1711100000000!5m2!1ses-419!2spe" 
                     allowfullscreen="" 
                     loading="lazy" 
                     referrerpolicy="no-referrer-when-downgrade">
@@ -249,10 +246,10 @@
     </main>
 
     <footer class="stats">
-        <div class="item"><strong>~35 km</strong><p>Recorrido</p></div>
-        <div class="item"><strong>~55 min</strong><p>Duración</p></div>
-        <div class="item"><strong>Lunes a Viernes</strong><p>Operación</p></div>
-        <div class="item"><strong>Directa</strong><p>Tipo de Ruta</p></div>
+        <div class="item-stat"><strong>~35 km</strong><p>Recorrido</p></div>
+        <div class="item-stat"><strong>~55 min</strong><p>Duración</p></div>
+        <div class="item-stat"><strong>Lunes a Viernes</strong><p>Operación</p></div>
+        <div class="item-stat"><strong>Directa</strong><p>Tipo de Ruta</p></div>
     </footer>
 
 </body>
