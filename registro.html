@@ -99,7 +99,7 @@
         }
         .btn-search:hover { background: #fff; transform: scale(1.05); }
 
-        /* RESULTADOS Y MENSAJE DE ERROR */
+        /* RESULTADOS Y ERROR */
         .results-container, .error-container {
             display: none;
             text-align: left;
@@ -113,7 +113,7 @@
 
         .data-item { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
         .data-item label { color: #ffb400; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; display: block; }
-        .data-item p { font-size: 1.1rem; margin-top: 4px; }
+        .data-item p { font-size: 1.1rem; margin-top: 4px; letter-spacing: 0.5px; }
 
         .status-badge {
             background: rgba(45, 164, 78, 0.2);
@@ -126,7 +126,6 @@
             margin-top: 20px;
         }
 
-        /* DISEÑO PARA DNI NO ENCONTRADO */
         .error-badge {
             background: rgba(255, 68, 68, 0.15);
             color: #ff6b6b;
@@ -135,8 +134,6 @@
             text-align: center;
             border: 1px solid rgba(255, 68, 68, 0.4);
         }
-        .error-badge h3 { font-size: 1rem; margin-bottom: 5px; }
-        .error-badge p { font-size: 0.8rem; opacity: 0.8; }
 
         @media (max-width: 768px) {
             .navbar { flex-direction: column; gap: 10px; text-align: center; }
@@ -174,13 +171,13 @@
             <div class="data-item"><label>Facultad:</label><p id="resFacultad">-</p></div>
             <div class="data-item"><label>Horario:</label><p id="resHorario">-</p></div>
             <div class="data-item"><label>Conformidad con Delegado:</label><p id="resConforme">-</p></div>
-            <div class="status-badge">REGISTRO CONFIRMADO EN RUTA VENTANILLA ✅</div>
+            <div class="status-badge">MATRÍCULA CONFIRMADA EN RUTA VENTANILLA ✅</div>
         </div>
 
         <div class="error-container" id="errorBox">
             <div class="error-badge">
                 <h3>❌ DNI NO ENCONTRADO</h3>
-                <p id="errorMsg">El número ingresado no figura en el padrón actual de la Ruta Ventanilla.</p>
+                <p>El número ingresado no figura en el padrón actual de la Ruta Ventanilla.</p>
             </div>
         </div>
     </main>
@@ -197,8 +194,6 @@
 
             searchBtn.innerText = "BUSCANDO...";
             searchBtn.disabled = true;
-            
-            // Ocultamos ambos cuadros antes de buscar
             resultsBox.style.display = 'none';
             errorBox.style.display = 'none';
 
@@ -209,8 +204,19 @@
                     searchBtn.disabled = false;
                     
                     if(data.found) {
-                        document.getElementById('resNombre').innerText = data.Nombres;
-                        document.getElementById('resCodigo').innerText = data.Codigo;
+                        // --- LÓGICA DE PROTECCIÓN DE IDENTIDAD ---
+                        
+                        // 1. Solo primer nombre
+                        const nombreCompleto = data.Nombres || "";
+                        const primerNombre = nombreCompleto.split(' ')[0];
+                        document.getElementById('resNombre').innerText = primerNombre + " ************";
+
+                        // 2. Solo primeros 2 dígitos del código
+                        const codigoFull = data.Codigo.toString();
+                        const codigoProtegido = codigoFull.substring(0, 2) + "********";
+                        document.getElementById('resCodigo').innerText = codigoProtegido;
+
+                        // Datos normales
                         document.getElementById('resFacultad').innerText = data.Facultad;
                         document.getElementById('resHorario').innerText = data.Horario;
                         
@@ -218,21 +224,21 @@
                         const valorConforme = (data.Conforme || "No especificado").toString().toUpperCase();
                         conformeElem.innerText = valorConforme;
                         
-                        // Color dinámico
                         if (valorConforme === 'SÍ' || valorConforme === 'SI') {
                             conformeElem.style.color = '#a6f3b7';
                         } else if (valorConforme === 'NO') {
                             conformeElem.style.color = '#ff4444';
+                        } else {
+                            conformeElem.style.color = '#fff';
                         }
                         
                         resultsBox.style.display = 'block';
                     } else {
-                        // MUESTRA EL CUADRO DE ERROR SI NO EXISTE
                         errorBox.style.display = 'block';
                     }
                 }).catch(() => {
                     searchBtn.disabled = false;
-                    alert("Error al conectar con la base de datos.");
+                    alert("Error de conexión.");
                 });
         });
     </script>
